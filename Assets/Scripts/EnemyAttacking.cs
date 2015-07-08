@@ -25,6 +25,7 @@ public class EnemyAttacking : MonoBehaviour {
 				SimpleFire();
 		}
 	}
+
 	void SimpleFire(){
 		timePassed += Time.deltaTime;
 		if(timePassed> fireRate){
@@ -36,6 +37,7 @@ public class EnemyAttacking : MonoBehaviour {
 	void Shoot(){
 		//GameObject clone;
 		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+		clone.GetComponent<Rigidbody>().AddForce(0,-500,0);
 	}
 
 

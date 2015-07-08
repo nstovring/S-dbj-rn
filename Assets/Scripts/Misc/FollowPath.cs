@@ -17,7 +17,7 @@ public class FollowPath : MonoBehaviour
 
 	public void Start()
 	{
-		//Path = GameObject.Find("easyPath").GetComponent<p>();
+
 	}
 
 	public void Move(p _path){

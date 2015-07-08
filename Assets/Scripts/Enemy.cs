@@ -8,7 +8,12 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 
 	public enum MovementTypes{
-		easy, medium, complex
+		Clamp,
+		Horizontal,
+		Vertical,
+		ZigZag,
+		Waiting,
+		easy
 	}
 
 	public MovementTypes myType = MovementTypes.easy;
@@ -18,10 +23,9 @@ public class Enemy : MonoBehaviour {
 		followPath = GetComponent<FollowPath>();
 
 		if(myType == MovementTypes.easy){
-			path = GameObject.FindGameObjectWithTag("easyPath").GetComponent<p>();
-			followPath.Move(path);
+			//path = GameObject.FindGameObjectWithTag("easyPath").GetComponent<p>();
+			//followPath.Move(path);
 		}
-		//followPath.Move();
 	}
 	
 	// Update is called once per frame
