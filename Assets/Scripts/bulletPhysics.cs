@@ -27,7 +27,9 @@ public class bulletPhysics : MonoBehaviour {
 		Destroy (gameObject, 3);
 }
 
-
+	void OnCollisionEnter(Collision other){
+		Destroy(gameObject);
+	}
 
 
 }

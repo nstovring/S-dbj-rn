@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Misc\PlayerPhysics.cs" />
      <Compile Include="Assets\Scripts\Misc\p.cs" />
      <Compile Include="Assets\Scripts\bulletPhysics.cs" />
+     <Compile Include="Assets\Scrolling.cs" />
      <Compile Include="Assets\Spawner.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
