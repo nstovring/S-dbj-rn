@@ -20,11 +20,6 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject Bullet;
 	public Transform bulletSpawn;
 
-<<<<<<< HEAD
-//	private BulletPhysics bulletPhysics;
-=======
-	//private BulletPhysics bulletPhysics;
->>>>>>> origin/master
 	private PlayerPhysics playerPhysics;
 	float direct;
 
@@ -46,26 +41,11 @@ public class PlayerControl : MonoBehaviour {
 		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
 		currentspeed = IncrementTowards (currentspeed, targetSpeed, acceleration);
 		currentspeedy = IncrementTowards (currentspeedy, targetSpeedY, acceleration);
-		/*
-		if (playerPhysics.grounded) {
-			amountToMove.y= 0;
-			if(Input.GetButtonDown("Jump")){
 
-				amountToMove.y = jumpHeight;
-
-			}
-				}
-*/
-
-		if (playerPhysics.atWall) {
-			targetSpeed =0;
-			currentspeed = 0;
-				}
-
+				
 		amountToMove.x = currentspeed;
 		amountToMove.y = currentspeedy;
 		playerPhysics.Move (amountToMove * Time.deltaTime);
-		direct = playerPhysics.getDirect(10);
 
 	
 
@@ -85,21 +65,10 @@ public class PlayerControl : MonoBehaviour {
 
 	private void Shoot(){
 
-<<<<<<< HEAD
-		GameObject clone = Instantiate (Bullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
-		if (direct > 0) {
-						clone.GetComponent<Rigidbody>().AddForce (clone.transform.right * 1500);
-				} else {
-			clone.GetComponent<Rigidbody>().AddForce (clone.transform.up * 1500);
-				}
-		Destroy (clone, 2);
-=======
-		GameObject bullet = Instantiate (Bullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
-		Destroy (bullet, 2);
->>>>>>> origin/master
-	
-		}
 
+		GameObject clone = Instantiate (Bullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+
+	}
 		private float IncrementTowards(float n, float target, float a)
 		{
 			if (n == target){
