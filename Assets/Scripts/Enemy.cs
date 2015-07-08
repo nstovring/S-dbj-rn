@@ -6,9 +6,22 @@ public class Enemy : MonoBehaviour {
 	int health = 5;
 	public FollowPath followPath;
 	// Use this for initialization
+
+	public enum MovementTypes{
+		easy, medium, complex
+	}
+
+	public MovementTypes myType = MovementTypes.easy;
+
+	private p path;
 	void Start () {
 		followPath = GetComponent<FollowPath>();
-		followPath.Move();
+
+		if(myType == MovementTypes.easy){
+			path = GameObject.FindGameObjectWithTag("easyPath").GetComponent<p>();
+			followPath.Move(path);
+		}
+		//followPath.Move();
 	}
 	
 	// Update is called once per frame
