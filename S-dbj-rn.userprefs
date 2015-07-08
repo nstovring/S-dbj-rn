@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Misc\PlayerControl.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="84" Column="101" />
+      <File FileName="Assets\Scripts\Misc\PlayerPhysics.cs" Line="14" Column="21" />
+      <File FileName="Assets\Scripts\bulletPhysics.cs" Line="17" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

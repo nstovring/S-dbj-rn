@@ -8,12 +8,12 @@ public class PDefi : MonoBehaviour {
 
 
 		public Transform[] Points;
-		
+		/*
 		public IEnumerator<Transform> GetPathsEnumerator()
 		{
 			throw NotImplementedException();
 		}
-		
+		*/
 		public void OnDrawGizmos()
 		{
 			if (Points == null || Points.Length < 2) 
