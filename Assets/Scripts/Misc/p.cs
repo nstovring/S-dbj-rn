@@ -7,6 +7,11 @@ public class p : MonoBehaviour
 
 	public Transform[] Points;
 
+	public enum LoopType{
+		NoLoop, Loop
+	}
+	public LoopType Type = LoopType.NoLoop;
+
 	public IEnumerator<Transform> GetPathEnumerator()
 	{
 		if (Points == null || Points.Length < 1) {
@@ -26,7 +31,11 @@ public class p : MonoBehaviour
 			}
 			else if(index >= Points.Length - 1)
 			{
+				if(Type == LoopType.Loop){
 				direction = -1;
+				}else if(Type == LoopType.NoLoop){
+				break;
+				}
 			}
 			index = index + direction;
 		}

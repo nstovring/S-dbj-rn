@@ -16,14 +16,14 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject Bullet;
 	public Transform bulletSpawn;
 
-	private BulletPhysics bulletPhysics;
+//	private BulletPhysics bulletPhysics;
 	private PlayerPhysics playerPhysics;
 	float direct;
 
 	// Use this for initialization
 	void Start () {
 
-		bulletPhysics = GetComponent <BulletPhysics> ();
+	//	bulletPhysics = GetComponent <BulletPhysics> ();
 		playerPhysics = GetComponent <PlayerPhysics> ();
 
 	
@@ -75,9 +75,9 @@ public class PlayerControl : MonoBehaviour {
 
 		GameObject clone = Instantiate (Bullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
 		if (direct > 0) {
-						clone.rigidbody.AddForce (clone.transform.right * 1500);
+						clone.GetComponent<Rigidbody>().AddForce (clone.transform.right * 1500);
 				} else {
-			clone.rigidbody.AddForce (clone.transform.up * 1500);
+			clone.GetComponent<Rigidbody>().AddForce (clone.transform.up * 1500);
 				}
 		Destroy (clone, 2);
 	

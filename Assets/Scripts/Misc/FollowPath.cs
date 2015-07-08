@@ -17,6 +17,10 @@ public class FollowPath : MonoBehaviour
 
 	public void Start()
 	{
+		//FollowPath();
+	}
+
+	public void Move(){
 		if (Path == null) 
 		{
 			Debug.LogError("Path cannot be null", gameObject);
@@ -24,12 +28,13 @@ public class FollowPath : MonoBehaviour
 		}
 		_currentPoint = Path.GetPathEnumerator();
 		_currentPoint.MoveNext ();
-
+		
 		if (_currentPoint.Current == null) {
 			return;
-				}
+		}
 		transform.position = _currentPoint.Current.position;
 	}
+
 	public void Update()
 	{
 		if (_currentPoint == null || _currentPoint.Current == null) {
@@ -39,7 +44,7 @@ public class FollowPath : MonoBehaviour
 			transform.position = Vector3.MoveTowards(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
 				}
 		else if (Type == FollowType.Lerp) {
-			transform.position = Vector3.MoveTowards(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
+			transform.position = Vector3.Lerp(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
 		}
 
 		var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;
