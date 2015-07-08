@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\EnemyAttacking.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Misc\FollowPath.cs" />
      <Compile Include="Assets\Scripts\Misc\PDefi.cs" />
      <Compile Include="Assets\Scripts\Misc\PlayerControl.cs" />

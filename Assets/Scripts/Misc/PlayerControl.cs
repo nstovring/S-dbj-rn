@@ -20,6 +20,7 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject Bullet;
 	public Transform bulletSpawn;
 
+	private GameController gameController;
 	private PlayerPhysics playerPhysics;
 	float direct;
 
@@ -61,6 +62,13 @@ public class PlayerControl : MonoBehaviour {
 				}
 	
 		}
+
+	void OnCollisionEnter(Collision c)
+	{
+		if (c.transform.tag == "Enemy") {
+			gameController.subractLife();
+		}
+	}
 		
 
 	private void Shoot(){

@@ -24,6 +24,7 @@ public class bulletPhysics : MonoBehaviour {
 
 	public void setVelocity(float v){
 		gameObject.GetComponent<Rigidbody> ().AddForce (transform.up * v*100);
+		Destroy (gameObject, 3);
 }
 
 
