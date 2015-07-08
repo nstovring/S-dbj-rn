@@ -42,7 +42,7 @@ public class BulletManager : MonoBehaviour
 		Counter += Time.deltaTime;
 		if (Input.GetButton ("Fire1") && Counter > fireRate) {
 			GameObject clone = Instantiate (Bullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
-			clone.GetComponent<Rigidbody> ().AddForce (transform.up *100);
+			clone.GetComponent<Rigidbody> ().AddForce (transform.up *500);
 			Counter = 0;
 			}
 		}
