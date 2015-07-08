@@ -17,10 +17,11 @@ public class FollowPath : MonoBehaviour
 
 	public void Start()
 	{
-		//FollowPath();
+		//Path = GameObject.Find("easyPath").GetComponent<p>();
 	}
 
-	public void Move(){
+	public void Move(p _path){
+		Path = _path;
 		if (Path == null) 
 		{
 			Debug.LogError("Path cannot be null", gameObject);
