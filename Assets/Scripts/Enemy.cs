@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
+	int health = 5;
 	public FollowPath followPath;
 	// Use this for initialization
 	void Start () {
