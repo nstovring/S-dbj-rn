@@ -3,6 +3,7 @@ using System.Collections;
 
 public class bulletPhysics : MonoBehaviour {
 	GameObject Bullet;
+	public float bulletSpeed = 2f;
 
 	public enum BulletTypes{
 		type1, type2, type3
@@ -19,11 +20,11 @@ public class bulletPhysics : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	public void setVelocity(float v){
-		gameObject.GetComponent<Rigidbody> ().AddForce (transform.up * v*100);
+
+		//gameObject.GetComponent<Rigidbody> ().AddForce (transform.up * v*100);
 		Destroy (gameObject, 3);
 }
 
