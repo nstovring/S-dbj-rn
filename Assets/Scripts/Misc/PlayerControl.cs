@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject Bullet;
 	public Transform bulletSpawn;
 
-	private GameController gameController;
+	public GameController gameController;
 	private PlayerPhysics playerPhysics;
 	float direct;
 
