@@ -35,6 +35,14 @@ public class EnemyAttacking : MonoBehaviour {
 		}
 	}
 
+/*	void SimpleFire(){
+		timePassed += Time.deltaTime;
+		if(timePassed> fireRate){
+			Shoot();
+			timePassed = 0;
+		}
+	}
+*/
 	void Shoot(){
 		//GameObject clone;
 		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
