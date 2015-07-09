@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour {
 	//	gameObject.GetComponent<Material>().SetColor(Color.white);
 
 		stayTime -= Time.deltaTime;
-		if(stayTime <= 0){
+		if(stayTime <= 0 && !exited){
 			ExitLevel();
 		}
 
@@ -83,9 +83,11 @@ public class Enemy : MonoBehaviour {
 		//transform.LookAt(player.transform);
 	}
 
+	bool exited = false;
 	public void ExitLevel(){
 		p path = GameObject.FindGameObjectWithTag("exitPath").GetComponent<p>();
 		followPath.Move(path);
+		exited = true;
 	}
 
 

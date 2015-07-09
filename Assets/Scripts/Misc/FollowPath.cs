@@ -34,27 +34,27 @@ public class FollowPath : MonoBehaviour
 		if (_currentPoint.Current == null) {
 			return;
 		}
-		StartCoroutine("GoToPath");
-		//transform.position = _currentPoint.Current.position;
-	}
-
-	IEnumerator GoToPath(){
-		transform.position = Vector3.MoveTowards(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
-		yield return null;
+		_currentPoint.MoveNext();
 	}
 
 	public void Update()
 	{
+		if(Input.GetKeyDown(KeyCode.A)){
+			//gameObject.GetComponent<Renderer>().material.color = Color.red;
+			//_currentPoint.MoveNext();
+		}
+
 		if (_currentPoint == null || _currentPoint.Current == null) {
 			return;
 				}
 		if (Type == FollowType.MoveToward) {
 			transform.position = Vector3.MoveTowards(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
-				}
+			}
 		else if (Type == FollowType.Lerp) {
 			transform.position = Vector3.Lerp(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
 		}else if(Type == FollowType.Stop){
-			return;
+			transform.position = Vector3.MoveTowards(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
+			//return;
 		}
 
 		var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;

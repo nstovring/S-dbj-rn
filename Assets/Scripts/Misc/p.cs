@@ -34,9 +34,6 @@ public class p : MonoBehaviour
 				if(Type == LoopType.Loop){
 				direction = -1;
 				}else if(Type == LoopType.NoLoop){
-
-					//enemiesInPath[currentEnemies].
-					//DitchPath();
 				break;
 				}
 			}
