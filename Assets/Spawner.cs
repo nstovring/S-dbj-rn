@@ -36,6 +36,9 @@ public class Spawner : MonoBehaviour
 		if(pathModes == SpawnPaths.easyPath){
 			path = GameObject.FindGameObjectWithTag("easyPath").GetComponent<p>(); 
 		}
+		if(pathModes == SpawnPaths.ZigZag){
+			path = GameObject.FindGameObjectWithTag("zigzagPath").GetComponent<p>(); 
+		}
 		if(pathModes != SpawnPaths.Waiting){
 			timePassed += Time.deltaTime;
 			if (timePassed > spawnTime && maxCurrentSpawn >= 0) {

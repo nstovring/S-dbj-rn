@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class EnemyAttacking : MonoBehaviour {
 
 	public Text lives;
-	float fireRate = 1f;
+	public float fireRate = 1f;
+	public float bulletSpeed = 1;
 	float timePassed;
 	public Transform bulletSpawn;
 	public GameObject tempBullet;
@@ -37,7 +38,7 @@ public class EnemyAttacking : MonoBehaviour {
 	void Shoot(){
 		//GameObject clone;
 		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
-		clone.GetComponent<Rigidbody>().AddForce(0,-500,0);
+		clone.GetComponent<Rigidbody>().AddForce(0,-bulletSpeed*100,0);
 	}
 
 
