@@ -4,6 +4,7 @@ using System.Collections;
 public class bulletPhysics : MonoBehaviour {
 	GameObject Bullet;
 	public float bulletSpeed = 2f;
+	int type;
 
 	public enum BulletTypes{
 		type1, type2, type3
@@ -13,14 +14,9 @@ public class bulletPhysics : MonoBehaviour {
 	public BulletTypes bulletTypes;
 	// Use this for initialization
 	void Start () {
-	if (bulletTypes == BulletTypes.type1) {
-			setVelocity(3);
-		}
+
 	}
-	
 	// Update is called once per frame
-	void Update () {
-	}
 
 	public void setVelocity(float v){
 
