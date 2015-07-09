@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
 	public int maxTime =10;
 	// Use this for initialization
 	void Start () {
-	
+		spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
 	}
 	
 	// Update is called once per frame

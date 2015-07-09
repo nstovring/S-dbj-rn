@@ -44,6 +44,8 @@ public class Spawner : MonoBehaviour
 			if (timePassed > spawnTime && maxCurrentSpawn >= 0) {
 				GameObject clone = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
 				clone.GetComponent<FollowPath>().Move(path);
+				path.AddEnemy(clone.transform);
+				maxCurrentSpawn--;
 				timePassed = 0;
 			}
 		}

@@ -5,7 +5,7 @@ public class FollowPath : MonoBehaviour
 {
 	public enum FollowType
 	{
-		MoveToward, Lerp
+		MoveToward, Lerp, Stop
 	}
 
 	public FollowType Type = FollowType.MoveToward;
@@ -46,6 +46,8 @@ public class FollowPath : MonoBehaviour
 				}
 		else if (Type == FollowType.Lerp) {
 			transform.position = Vector3.Lerp(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
+		}else if(Type == FollowType.Stop){
+			return;
 		}
 
 		var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;
