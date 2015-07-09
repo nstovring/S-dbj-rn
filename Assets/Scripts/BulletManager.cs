@@ -14,6 +14,9 @@ public class BulletManager : MonoBehaviour
 	public Transform bulletSpawn;
 	public Transform bulletSpawn1;
 	public Transform bulletSpawn2;
+	public int fullSpeed = 5;
+	float time = 0;
+	int roundTime;
 	// Use this for initialization
 	void Start ()
 	{
@@ -23,6 +26,9 @@ public class BulletManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+
+		time += Time.deltaTime;
+		roundTime = Mathf.RoundToInt(time*fullSpeed);
 		if (fireMode == fireModes.semi) {
 			semi ();
 		}
@@ -47,8 +53,15 @@ public class BulletManager : MonoBehaviour
 	private void full(){
 		Counter += Time.deltaTime;
 		if (Input.GetButton ("Fire1") && Counter > fireRate) {
-			GameObject clone = Instantiate (Bullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+
+			if(roundTime %2 ==1){
+			GameObject clone = Instantiate (Bullet, bulletSpawn1.position, bulletSpawn.rotation)as GameObject;
 			clone.GetComponent<Rigidbody> ().AddForce (transform.up *500);
+			}
+			if(roundTime %2 == 0){
+			GameObject clone1 = Instantiate (Bullet, bulletSpawn2.position, bulletSpawn.rotation)as GameObject;
+			clone1.GetComponent<Rigidbody> ().AddForce (transform.up *500);
+			}
 			Counter = 0;
 			}
 		}

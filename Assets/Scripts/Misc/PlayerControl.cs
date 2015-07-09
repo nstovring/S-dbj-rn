@@ -14,10 +14,12 @@ public class PlayerControl : MonoBehaviour
 	private float currentspeedy;
 	private float targetSpeed;
 	private Vector2 amountToMove;
+	private bool playerHit = false;
 
 	public BulletManager bulletManager;
 	public GameController gameController;
 	private PlayerPhysics playerPhysics;
+	public float timePassed= 0;
 
 	// Use this for initialization
 	void Start ()
@@ -46,6 +48,18 @@ public class PlayerControl : MonoBehaviour
 		//amountToMove.y = currentspeedy;
 		playerPhysics.Move (amountToMove * Time.deltaTime);
 
+		if (playerHit) {
+			timePassed += Time.deltaTime;
+			if (timePassed < .5f && timePassed > 0) {
+				gameObject.GetComponent<SpriteRenderer> ().material.color = Color.red;
+			} else {
+				timePassed = 0;
+				playerHit = false;
+				gameObject.GetComponent<SpriteRenderer> ().material.color = Color.white;
+			}
+			
+		}
+
 	
 
 
@@ -56,8 +70,10 @@ public class PlayerControl : MonoBehaviour
 
 	void OnCollisionEnter (Collision c)
 	{
-		if (c.transform.tag == "Enemy") {
-			gameController.subractLife ();
+		if (c.transform.tag == "Enemy" || c.transform.tag == "enemyBullet") {
+//			gameController.subractLife ();
+			playerHit = true;
+		
 		}
 	}
 

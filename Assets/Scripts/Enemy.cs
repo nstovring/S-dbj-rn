@@ -37,12 +37,10 @@ public class Enemy : MonoBehaviour {
 	void Update () {
 		if(enemyHit){
 			timePassed += Time.deltaTime;
-			Debug.Log(timePassed);
 			if(timePassed < .5f && timePassed > 0){
 				gameObject.GetComponent<SpriteRenderer>().material.color = Color.red;
 			}
 			else{
-				Debug.Log("farvel");
 				timePassed = 0;
 				enemyHit = false;
 				gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
