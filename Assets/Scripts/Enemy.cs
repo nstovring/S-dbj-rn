@@ -30,7 +30,14 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+	float stayTime = 10;
+
 	void Update () {
+		stayTime -= Time.deltaTime;
+		if(stayTime <= 0){
+			ExitLevel();
+		}
+
 		LookAtPlayer();
 		RaycastHit hit;
 		if(Physics.Raycast(transform.position,transform.right,out hit,enemyDistance) || Physics.Raycast(transform.position,-transform.right,out hit,enemyDistance)){
@@ -40,7 +47,13 @@ public class Enemy : MonoBehaviour {
 		}else{
 			followPath.Type = FollowPath.FollowType.MoveToward;
 		}
-	
+		SineMove();
+	}
+
+	float i;
+	void SineMove(){
+		transform.position += new Vector3(0,Mathf.Sin(Time.deltaTime),0);
+		i+= Time.deltaTime;
 	}
 
 	void LookAtPlayer(){
@@ -51,6 +64,12 @@ public class Enemy : MonoBehaviour {
 		//transform.rotation = new 
 		//transform.LookAt(player.transform);
 	}
+
+	public void ExitLevel(){
+		p path = GameObject.FindGameObjectWithTag("exitPath").GetComponent<p>();
+		followPath.Move(path);
+	}
+
 
 	void OnCollisionEnter(Collision other){
 		if(other.transform.tag == "Bullet"){

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class FollowPath : MonoBehaviour 
 {
@@ -33,7 +34,13 @@ public class FollowPath : MonoBehaviour
 		if (_currentPoint.Current == null) {
 			return;
 		}
-		transform.position = _currentPoint.Current.position;
+		StartCoroutine("GoToPath");
+		//transform.position = _currentPoint.Current.position;
+	}
+
+	IEnumerator GoToPath(){
+		transform.position = Vector3.MoveTowards(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
+		yield return null;
 	}
 
 	public void Update()
