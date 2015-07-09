@@ -25,7 +25,6 @@ public class GameController : MonoBehaviour {
 			spawner.maxCurrentSpawn = 5;
 		} else {
 			spawner.pathModes = Spawner.SpawnPaths.Waiting;		}
-		Debug.Log (timePassed);
 	}
 
 	public void subractLife(){

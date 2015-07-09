@@ -55,10 +55,14 @@ public class BulletManager : MonoBehaviour
 
 	private void shotgun (){
 		if (Input.GetButtonDown ("Fire1") ){
-
-			//bulletSpawn.Rotate(0,40,0);
 			GameObject clone = Instantiate(Bullet, bulletSpawn.position,bulletSpawn.rotation) as GameObject;
-			clone.GetComponent<Rigidbody> ().AddForce (transform.up *500);
+			clone.GetComponent<Rigidbody> ().AddForce (new Vector3(.7f, 1,0) *500);
+			clone.transform.Rotate(0,0,-30);
+			GameObject clone1 = Instantiate(Bullet, bulletSpawn.position,bulletSpawn.rotation) as GameObject;
+			clone1.GetComponent<Rigidbody> ().AddForce (new Vector3(-.7f, 1,0) *500);
+			clone1.transform.Rotate(0,0,30);
+			GameObject clone2 = Instantiate(Bullet, bulletSpawn.position,bulletSpawn.rotation) as GameObject;
+			clone2.GetComponent<Rigidbody> ().AddForce (new Vector3(0, 1,0) *500);
 
 		}
 	}
