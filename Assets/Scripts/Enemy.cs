@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour {
 	public int health = 5;
 	public float enemyDistance = 1;
 	public FollowPath followPath;
+	float timePassed;
+	private bool enemyHit= false;
 	// Use this for initialization
 
 	public enum MovementTypes{
@@ -33,6 +35,22 @@ public class Enemy : MonoBehaviour {
 	float stayTime = 10;
 
 	void Update () {
+		if(enemyHit){
+			timePassed += Time.deltaTime;
+			Debug.Log(timePassed);
+			if(timePassed < .5f && timePassed > 0){
+				gameObject.GetComponent<SpriteRenderer>().material.color = Color.red;
+			}
+			else{
+				Debug.Log("farvel");
+				timePassed = 0;
+				enemyHit = false;
+				gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
+			}
+
+		}
+	//	gameObject.GetComponent<Material>().SetColor(Color.white);
+
 		stayTime -= Time.deltaTime;
 		if(stayTime <= 0){
 			ExitLevel();
@@ -73,10 +91,11 @@ public class Enemy : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other){
 		if(other.transform.tag == "Bullet"){
+			enemyHit = true;
+			}
 			health--;
 			if(health <= 0){
 			Destroy(gameObject);
 			}
 		}
 	}
-}
