@@ -25,6 +25,9 @@ public class EnemyAttacking : MonoBehaviour {
 		if(fireMode == FireMode.Simple){
 				SimpleFire();
 		}
+		if(fireMode == FireMode.Burst){
+			Burst ();
+		}
 	}
 
 	void SimpleFire(){
@@ -35,18 +38,33 @@ public class EnemyAttacking : MonoBehaviour {
 		}
 	}
 
-/*	void SimpleFire(){
+	void Burst(){
+		float burstFireRate = 3;
+		float burstInterval = 0.1f;
+		float IntervalPassed = 0f;
+		int shots = 4;
 		timePassed += Time.deltaTime;
-		if(timePassed> fireRate){
+		if(timePassed> burstFireRate){
+			IntervalPassed +=Time.deltaTime;
+			if(timePassed> burstInterval){
 			Shoot();
+			IntervalPassed = 0;
+				shots--;
+			}
+			if(shots<= 0){
 			timePassed = 0;
+				shots = 4;
+			}
 		}
 	}
-*/
+
 	void Shoot(){
 		//GameObject clone;
 		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
-		clone.GetComponent<Rigidbody>().AddForce(0,-bulletSpeed*100,0);
+		//transform.TransformDirection()
+		//clone.GetComponent<Rigidbody>().AddForce(0,-bulletSpeed*100,0);
+		clone.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
+
 	}
 
 
