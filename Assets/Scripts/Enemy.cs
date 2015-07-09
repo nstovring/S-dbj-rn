@@ -32,9 +32,7 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	float stayTime = 10;
-
-	void Update () {
+	public void ColorChange(){
 		if(enemyHit){
 			timePassed += Time.deltaTime;
 			Debug.Log(timePassed);
@@ -47,10 +45,14 @@ public class Enemy : MonoBehaviour {
 				enemyHit = false;
 				gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
 			}
-
 		}
-	//	gameObject.GetComponent<Material>().SetColor(Color.white);
+	}
 
+	float stayTime = 10;
+
+	void Update () {
+	//	gameObject.GetComponent<Material>().SetColor(Color.white);
+		ColorChange();
 		stayTime -= Time.deltaTime;
 		if(stayTime <= 0 && !exited){
 			ExitLevel();
@@ -58,13 +60,13 @@ public class Enemy : MonoBehaviour {
 
 		LookAtPlayer();
 		RaycastHit hit;
-		if(Physics.Raycast(transform.position,transform.right,out hit,enemyDistance) || Physics.Raycast(transform.position,-transform.right,out hit,enemyDistance)){
+		/*if(Physics.Raycast(transform.position,transform.right,out hit,enemyDistance) || Physics.Raycast(transform.position,-transform.right,out hit,enemyDistance)){
 			if(hit.transform.tag == "Enemy"){
 				followPath.Type = FollowPath.FollowType.Stop;
 			}
 		}else{
 			followPath.Type = FollowPath.FollowType.MoveToward;
-		}
+		}*/
 		SineMove();
 	}
 
@@ -78,9 +80,6 @@ public class Enemy : MonoBehaviour {
 		var dir = player.transform.position - transform.position;
 		var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
-
-		//transform.rotation = new 
-		//transform.LookAt(player.transform);
 	}
 
 	bool exited = false;
