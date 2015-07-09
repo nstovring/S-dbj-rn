@@ -18,7 +18,6 @@ public class PlayerControl : MonoBehaviour
 	public BulletManager bulletManager;
 	public GameController gameController;
 	private PlayerPhysics playerPhysics;
-	float direct;
 
 	// Use this for initialization
 	void Start ()
@@ -36,14 +35,15 @@ public class PlayerControl : MonoBehaviour
 
 		Vector3 playerPos = Player.transform.position;
 
-		targetSpeedY = Input.GetAxis ("Vertical") * speed;
+		targetSpeedY = Input.GetAxisRaw ("Vertical") * speed;
 		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
-		currentspeed = IncrementTowards (currentspeed, targetSpeed, acceleration);
-		currentspeedy = IncrementTowards (currentspeedy, targetSpeedY, acceleration);
+		//currentspeed = IncrementTowards (currentspeed, targetSpeed, acceleration);
+		//currentspeedy = IncrementTowards (currentspeedy, targetSpeedY, acceleration);
 
-				
-		amountToMove.x = currentspeed;
-		amountToMove.y = currentspeedy;
+		amountToMove.y = targetSpeedY;
+		amountToMove.x = targetSpeed;
+		//amountToMove.x = currentspeed;
+		//amountToMove.y = currentspeedy;
 		playerPhysics.Move (amountToMove * Time.deltaTime);
 
 	
