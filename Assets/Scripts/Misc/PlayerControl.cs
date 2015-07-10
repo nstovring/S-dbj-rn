@@ -25,7 +25,7 @@ public class PlayerControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		anim = GetComponentInChildren<Animator> ();
+		//anim = GetComponentInChildren<Animator> ();
 		shipAnim = GetComponent<Animator>();
 
 		//	bulletPhysics = GetComponent <BulletPhysics> ();
@@ -47,13 +47,13 @@ public class PlayerControl : MonoBehaviour
 		playerPhysics.Move (amountToMove * Time.deltaTime);
 
 		if (targetSpeedY >= 0.1f) {
-			anim.SetInteger ("JetState", 1);
+			anim.SetInteger ("JetStateN", 1);
 		} 
 		if (targetSpeedY == 0) {
-			anim.SetInteger ("JetState", 0);
+			anim.SetInteger ("JetStateN", 0);
 		} 
 		if(targetSpeedY <=-0.1f) {
-			anim.SetInteger("JetState", 2);
+			anim.SetInteger("JetStateN", 2);
 		}
 
 		if(targetSpeed >= 0.1f){
