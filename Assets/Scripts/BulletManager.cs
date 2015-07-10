@@ -24,7 +24,8 @@ public class BulletManager : MonoBehaviour
 	{
 	
 	}
-	
+
+	private Vector3 up = Vector3.up;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -57,13 +58,16 @@ public class BulletManager : MonoBehaviour
 		if (Input.GetButton ("Fire1") && roundTime > time) {
 
 			if(roundTime %2 ==1 && lastShot == true){
-			GameObject clone = Instantiate (Bullet, bulletSpawn1.position, bulletSpawn.rotation)as GameObject;
-			clone.GetComponent<Rigidbody> ().AddForce (transform.up *bulletSpeed*100);
+			//GameObject clone = Instantiate (Bullet, bulletSpawn1.position, bulletSpawn.rotation)as GameObject;
+			GameObject clone = Instantiate (Bullet, bulletSpawn1.position, Quaternion.identity)as GameObject;
+			clone.GetComponent<Rigidbody> ().AddForce (clone.transform.up *bulletSpeed*100);
+//			clone.GetComponent<Rigidbody> ().AddForce (transform.up *bulletSpeed*100);
 				lastShot = false;
 			}
 			if(roundTime %2 == 0 && lastShot == false){
-			GameObject clone1 = Instantiate (Bullet, bulletSpawn2.position, bulletSpawn.rotation)as GameObject;
-			clone1.GetComponent<Rigidbody> ().AddForce (transform.up *bulletSpeed*100);
+				GameObject clone1 = Instantiate (Bullet, bulletSpawn2.position, Quaternion.identity)as GameObject;
+				clone1.GetComponent<Rigidbody> ().AddForce (clone1.transform.up *bulletSpeed*100);
+				//clone1.GetComponent<Rigidbody> ().AddForce (transform.up *bulletSpeed*100);
 				lastShot = true;
 			}
 			}

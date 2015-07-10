@@ -42,9 +42,11 @@ public class PlayerControl : MonoBehaviour
 		Vector3 playerPos = Player.transform.position;
 		targetSpeedY = Input.GetAxisRaw ("Vertical") * speed;
 		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
+
+		transform.position += new Vector3(targetSpeed,targetSpeedY,0) * Time.deltaTime;
 		amountToMove.y = targetSpeedY;
 		amountToMove.x = targetSpeed;
-		playerPhysics.Move (amountToMove * Time.deltaTime);
+		//playerPhysics.Move (amountToMove * Time.deltaTime);
 
 		if (targetSpeedY >= 0.1f) {
 			anim.SetInteger ("JetState", 1);
@@ -55,15 +57,20 @@ public class PlayerControl : MonoBehaviour
 		if(targetSpeedY <=-0.1f) {
 			anim.SetInteger("JetState", 2);
 		}
-
 		if(targetSpeed >= 0.1f){
-			shipAnim.SetInteger("Skew", 1);
+			rotation.eulerAngles = new Vector3(0,0,-15);
+			transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 0.1f );
+			//shipAnim.SetInteger("Skew", 1);
 			//Change sprite
 		}else if(targetSpeed<= -0.1f){
+			rotation.eulerAngles = new Vector3(0,0,15);
+			transform.rotation = Quaternion.Lerp(transform.rotation, rotation,  0.1f );
 			//Change sprite
-			shipAnim.SetInteger("Skew", 2);
+			//shipAnim.SetInteger("Skew", 2);
 		}else{
-			shipAnim.SetInteger("Skew", 0);
+			rotation.eulerAngles = new Vector3(0,0,0);
+			transform.rotation = Quaternion.Lerp(transform.rotation, rotation,  0.1f );
+			//shipAnim.SetInteger("Skew", 0);
 		}
 
 		if (playerHit) {
