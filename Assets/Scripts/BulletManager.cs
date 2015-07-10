@@ -31,7 +31,6 @@ public class BulletManager : MonoBehaviour
 
 		time += Time.deltaTime*fullSpeed;
 		roundTime = Mathf.RoundToInt(time);
-		Debug.Log (roundTime);
 		if (fireMode == fireModes.semi) {
 			semi ();
 		}

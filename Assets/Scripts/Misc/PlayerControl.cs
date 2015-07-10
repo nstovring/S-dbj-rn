@@ -14,6 +14,7 @@ public class PlayerControl : MonoBehaviour
 	private float targetSpeed;
 	private Vector2 amountToMove;
 	private bool playerHit = false;
+	public Animator anim;
 
 	public BulletManager bulletManager;
 	public GameController gameController;
@@ -23,6 +24,8 @@ public class PlayerControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		anim = GetComponentInChildren<Animator> ();
+
 
 		//	bulletPhysics = GetComponent <BulletPhysics> ();
 		playerPhysics = GetComponent <PlayerPhysics> ();
@@ -34,12 +37,23 @@ public class PlayerControl : MonoBehaviour
 	public Quaternion rotation = Quaternion.identity;
 	void Update ()
 	{
+
 		Vector3 playerPos = Player.transform.position;
 		targetSpeedY = Input.GetAxisRaw ("Vertical") * speed;
 		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
 		amountToMove.y = targetSpeedY;
 		amountToMove.x = targetSpeed;
 		playerPhysics.Move (amountToMove * Time.deltaTime);
+
+		if (targetSpeedY >= 0.1f) {
+			anim.SetInteger ("JetState", 0);
+		} 
+		if (targetSpeedY == 0) {
+			anim.SetInteger ("JetState", 1);
+		} 
+		if(targetSpeedY <=-0.1f) {
+			anim.SetInteger("JetState", 2);
+		}
 
 		if(targetSpeed >= 0.1f){
 
