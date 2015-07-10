@@ -1,14 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyAttacking.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PowerUP.cs">
     <Files>
-      <File FileName="Assets\Scripts\Enemy.cs" Line="73" Column="18" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="8" Column="19" />
-      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="78" Column="4" />
-      <File FileName="Assets\Scripts\Misc\PlayerPhysics.cs" Line="9" Column="34" />
-      <File FileName="Assets\Scripts\BulletManager.cs" Line="53" Column="4" />
-      <File FileName="Assets\Scripts\bulletPhysics.cs" Line="9" Column="26" />
-      <File FileName="Assets\Scripts\EnemyAttacking.cs" Line="29" Column="13" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="70" Column="3" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="6" Column="19" />
+      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="79" Column="12" />
+      <File FileName="Assets\Scripts\Misc\PlayerPhysics.cs" Line="5" Column="2" />
+      <File FileName="Assets\Scripts\BulletManager.cs" Line="10" Column="16" />
+      <File FileName="Assets\Scripts\bulletPhysics.cs" Line="5" Column="20" />
+      <File FileName="Assets\Scripts\EnemyAttacking.cs" Line="15" Column="28" />
+      <File FileName="Assets\Scripts\PowerUP.cs" Line="9" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

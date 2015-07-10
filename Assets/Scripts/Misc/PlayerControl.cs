@@ -4,9 +4,8 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour
 {
 	public GameObject Player;
+	public GameObject Shield;
 	public float speed = 8;
-	public float acceleration = 30;
-	public float jumpHeight = 12;
 	public float fireRate = 0.25f;
 	private float targetSpeedY;
 	private float currentspeed;
@@ -83,6 +82,9 @@ public class PlayerControl : MonoBehaviour
 				gameObject.GetComponent<SpriteRenderer> ().material.color = Color.white;
 			}
 			
+		}
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			GameObject sh = Instantiate( Shield, transform.position, transform.rotation)as GameObject;
 		}
 
 	
