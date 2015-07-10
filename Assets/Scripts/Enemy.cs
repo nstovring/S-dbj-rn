@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour {
 	public FollowPath followPath;
 	float timePassed;
 	private bool enemyHit= false;
+    public Sprite newSprite; 
+	private SpriteRenderer spriteRenderer;
 	// Use this for initialization
 
 	public enum MovementTypes{
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour {
 	private GameObject player;
 	private p path;
 	void Start () {
+		spriteRenderer = GetComponent<SpriteRenderer> ();
 		followPath = GetComponent<FollowPath>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		if(myType == MovementTypes.easy){
@@ -84,6 +87,9 @@ public class Enemy : MonoBehaviour {
 			enemyHit = true;
 			}
 			health--;
+		if (health <= 4) {
+			spriteRenderer.sprite = newSprite;
+		}
 			if(health <= 0){
 			Destroy(gameObject);
 			}
