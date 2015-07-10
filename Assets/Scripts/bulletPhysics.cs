@@ -14,14 +14,14 @@ public class bulletPhysics : MonoBehaviour {
 	public BulletTypes bulletTypes;
 	// Use this for initialization
 	void Start () {
-
+		Destroy (gameObject, 3);
 	}
 	// Update is called once per frame
 
 	public void setVelocity(float v){
 
 		//gameObject.GetComponent<Rigidbody> ().AddForce (transform.up * v*100);
-		Destroy (gameObject, 3);
+		//Destroy (gameObject, 3);
 }
 
 	void OnCollisionEnter(Collision other){
