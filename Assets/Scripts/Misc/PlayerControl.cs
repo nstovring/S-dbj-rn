@@ -25,7 +25,7 @@ public class PlayerControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		anim = GetComponentInChildren<Animator> ();
+		//anim = GetComponentInChildren<Animator> ();
 		shipAnim = GetComponent<Animator>();
 
 		//	bulletPhysics = GetComponent <BulletPhysics> ();
