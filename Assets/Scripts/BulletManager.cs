@@ -8,7 +8,7 @@ public class BulletManager : MonoBehaviour
 	}
 	public fireModes fireMode;
 	float Counter;
-	public float fireRate = 0.25f;
+	public float fireRate = 0.15f;
 	public GameObject Bullet;
 	private bulletPhysics bulletPhysics;
 	public Transform bulletSpawn;
@@ -17,6 +17,8 @@ public class BulletManager : MonoBehaviour
 	public int fullSpeed = 5;
 	float time = 0;
 	int roundTime;
+	bool lastShot = true;
+	public float bulletSpeed = 0;
 	// Use this for initialization
 	void Start ()
 	{
@@ -27,8 +29,9 @@ public class BulletManager : MonoBehaviour
 	void Update ()
 	{
 
-		time += Time.deltaTime;
-		roundTime = Mathf.RoundToInt(time*fullSpeed);
+		time += Time.deltaTime*fullSpeed;
+		roundTime = Mathf.RoundToInt(time);
+		Debug.Log (roundTime);
 		if (fireMode == fireModes.semi) {
 			semi ();
 		}
@@ -52,17 +55,18 @@ public class BulletManager : MonoBehaviour
 	}
 	private void full(){
 		Counter += Time.deltaTime;
-		if (Input.GetButton ("Fire1") && Counter > fireRate) {
+		if (Input.GetButton ("Fire1") && roundTime > time) {
 
-			if(roundTime %2 ==1){
+			if(roundTime %2 ==1 && lastShot == true){
 			GameObject clone = Instantiate (Bullet, bulletSpawn1.position, bulletSpawn.rotation)as GameObject;
-			clone.GetComponent<Rigidbody> ().AddForce (transform.up *500);
+			clone.GetComponent<Rigidbody> ().AddForce (transform.up *bulletSpeed*100);
+				lastShot = false;
 			}
-			if(roundTime %2 == 0){
+			if(roundTime %2 == 0 && lastShot == false){
 			GameObject clone1 = Instantiate (Bullet, bulletSpawn2.position, bulletSpawn.rotation)as GameObject;
-			clone1.GetComponent<Rigidbody> ().AddForce (transform.up *500);
+			clone1.GetComponent<Rigidbody> ().AddForce (transform.up *bulletSpeed*100);
+				lastShot = true;
 			}
-			Counter = 0;
 			}
 		}
 
