@@ -42,7 +42,7 @@ public class EnemyAttacking : MonoBehaviour {
 	int shots = 4;
 
 	void Burst(){
-		float burstInterval = 0.2f;
+		float burstInterval = 0.1f;
 		timePassed += Time.deltaTime;
 		//Debug.Log (shots);
 		if(timePassed> burstFireRate){
