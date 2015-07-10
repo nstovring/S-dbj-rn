@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour
 	}
 	
 	// Update is called once per frame
+	public Quaternion rotation = Quaternion.identity;
 	void Update ()
 	{
 		Vector3 playerPos = Player.transform.position;
@@ -39,6 +40,13 @@ public class PlayerControl : MonoBehaviour
 		amountToMove.y = targetSpeedY;
 		amountToMove.x = targetSpeed;
 		playerPhysics.Move (amountToMove * Time.deltaTime);
+
+		if(targetSpeed >= 0.1f){
+
+			//Change sprite
+		}else if(targetSpeed<= -0.1f){
+			//Change sprite
+		}
 
 		if (playerHit) {
 			timePassed += Time.deltaTime;

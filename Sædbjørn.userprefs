@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Misc\PlayerControl.cs">
     <Files>
-      <File FileName="Assets\Scripts\Enemy.cs" Line="69" Column="6" />
+      <File FileName="Assets\Scripts\Misc\PlayerPhysics.cs" Line="30" Column="21" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="58" Column="1" />
       <File FileName="Assets\Scripts\Misc\FollowPath.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\EnemyAttacking.cs" Line="1" Column="1" />
       <File FileName="Assets\Spawner.cs" Line="1" Column="1" />
@@ -10,6 +11,7 @@
       <File FileName="Assets\Scrolling.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Misc\p.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\bulletPhysics.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="43" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
