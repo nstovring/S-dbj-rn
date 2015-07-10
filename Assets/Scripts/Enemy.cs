@@ -55,16 +55,7 @@ public class Enemy : MonoBehaviour {
 		if(stayTime <= 0 && !exited){
 			ExitLevel();
 		}
-
 		LookAtPlayer();
-		RaycastHit hit;
-		/*if(Physics.Raycast(transform.position,transform.right,out hit,enemyDistance) || Physics.Raycast(transform.position,-transform.right,out hit,enemyDistance)){
-			if(hit.transform.tag == "Enemy"){
-				followPath.Type = FollowPath.FollowType.Stop;
-			}
-		}else{
-			followPath.Type = FollowPath.FollowType.MoveToward;
-		}*/
 		SineMove();
 	}
 
