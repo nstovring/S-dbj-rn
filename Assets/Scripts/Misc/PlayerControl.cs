@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour
 {
 	public GameObject Player;
-	public float gravity = 20;
 	public float speed = 8;
 	public float acceleration = 30;
 	public float jumpHeight = 12;
@@ -34,18 +33,11 @@ public class PlayerControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
 		Vector3 playerPos = Player.transform.position;
-
 		targetSpeedY = Input.GetAxisRaw ("Vertical") * speed;
 		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
-		//currentspeed = IncrementTowards (currentspeed, targetSpeed, acceleration);
-		//currentspeedy = IncrementTowards (currentspeedy, targetSpeedY, acceleration);
-
 		amountToMove.y = targetSpeedY;
 		amountToMove.x = targetSpeed;
-		//amountToMove.x = currentspeed;
-		//amountToMove.y = currentspeedy;
 		playerPhysics.Move (amountToMove * Time.deltaTime);
 
 		if (playerHit) {

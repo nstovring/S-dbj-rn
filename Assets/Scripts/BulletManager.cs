@@ -86,16 +86,6 @@ public class BulletManager : MonoBehaviour
 		}
 	}
 
-	private float IncrementTowards (float n, float target, float a)
-	{
-		if (n == target) {
-			return n;
-		} else {
-			float dir = Mathf.Sign (target - n);
-			n += a * Time.deltaTime * dir;
-			return (dir == Mathf.Sign (target - n)) ? n : target;
-			
-		}
-	}
+
 	
 }
