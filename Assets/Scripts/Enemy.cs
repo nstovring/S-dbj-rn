@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
 	private bool enemyHit= false;
     public Sprite newSprite; 
 	private SpriteRenderer spriteRenderer;
+	public GameObject Explosion;
 	// Use this for initialization
 
 	public enum MovementTypes{
@@ -87,11 +88,16 @@ public class Enemy : MonoBehaviour {
 			enemyHit = true;
 			}
 			health--;
-		if (health <= 4) {
+		if (health == 4 && health > 3) {
 			spriteRenderer.sprite = newSprite;
 		}
+		if (health <= 3) {
+
+		}
 			if(health <= 0){
+			GameObject Ex = Instantiate(Explosion, transform.position, transform.rotation)as GameObject;
 			Destroy(gameObject);
+			Destroy (Ex, 0.5f);
 			}
 		}
 	}
