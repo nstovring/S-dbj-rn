@@ -46,10 +46,10 @@ public class PlayerControl : MonoBehaviour
 		playerPhysics.Move (amountToMove * Time.deltaTime);
 
 		if (targetSpeedY >= 0.1f) {
-			anim.SetInteger ("JetState", 0);
+			anim.SetInteger ("JetState", 1);
 		} 
 		if (targetSpeedY == 0) {
-			anim.SetInteger ("JetState", 1);
+			anim.SetInteger ("JetState", 0);
 		} 
 		if(targetSpeedY <=-0.1f) {
 			anim.SetInteger("JetState", 2);
