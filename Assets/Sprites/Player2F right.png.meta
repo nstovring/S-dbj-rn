@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: af439d634f9f8664ca5b535cfa41ac4e
-timeCreated: 1436555965
+timeCreated: 1436562711
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -34,7 +34,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -57,52 +57,52 @@ TextureImporter:
     - name: Player2F right_0
       rect:
         serializedVersion: 2
-        x: 585
-        y: 317
-        width: 538
-        height: 385
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Player2F right_1
-      rect:
-        serializedVersion: 2
-        x: 1153
+        x: 21
         y: 342
         width: 539
         height: 371
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Player2F right_1
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 344
+        width: 538
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Player2F right_2
       rect:
         serializedVersion: 2
-        x: 1719
-        y: 315
-        width: 539
-        height: 386
+        x: 1159
+        y: 331
+        width: 533
+        height: 393
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Player2F right_3
       rect:
         serializedVersion: 2
-        x: 2278
-        y: 276
+        x: 1719
+        y: 343
         width: 539
-        height: 432
+        height: 358
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Player2F right_4
       rect:
         serializedVersion: 2
-        x: 48
-        y: 299
-        width: 537
-        height: 430
+        x: 2282
+        y: 321
+        width: 535
+        height: 370
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
