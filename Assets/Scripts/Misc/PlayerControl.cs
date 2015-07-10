@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
 	private Vector2 amountToMove;
 	private bool playerHit = false;
 	public Animator anim;
+	Animator shipAnim;
 
 	public BulletManager bulletManager;
 	public GameController gameController;
@@ -25,7 +26,7 @@ public class PlayerControl : MonoBehaviour
 	void Start ()
 	{
 		anim = GetComponentInChildren<Animator> ();
-
+		shipAnim = GetComponent<Animator>();
 
 		//	bulletPhysics = GetComponent <BulletPhysics> ();
 		playerPhysics = GetComponent <PlayerPhysics> ();
@@ -56,10 +57,13 @@ public class PlayerControl : MonoBehaviour
 		}
 
 		if(targetSpeed >= 0.1f){
-
+			shipAnim.SetInteger("Skew", 1);
 			//Change sprite
 		}else if(targetSpeed<= -0.1f){
 			//Change sprite
+			shipAnim.SetInteger("Skew", 2);
+		}else{
+			shipAnim.SetInteger("Skew", 0);
 		}
 
 		if (playerHit) {
