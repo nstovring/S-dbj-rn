@@ -24,6 +24,8 @@ public class PowerUP : MonoBehaviour {
 		transform.RotateAround (transform.position, new Vector3 (0, 0, 1),Time.deltaTime*100);	
 		Playerpos = GameObject.Find ("Player").GetComponent<Transform> ();
 		transform.position = Playerpos.position;
+		Destroy (gameObject, 5);
+		Debug.Log("dasd");
 	}
 
 	

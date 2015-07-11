@@ -14,7 +14,10 @@ public class PlayerControl : MonoBehaviour
 	private Vector2 amountToMove;
 	private bool playerHit = false;
 	public Animator anim;
+	//public PickUps pickUP;
 	Animator shipAnim;
+	bool s;
+	bool shieldAvailable;
 
 	public BulletManager bulletManager;
 	public GameController gameController;
@@ -24,6 +27,7 @@ public class PlayerControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+
 		//anim = GetComponentInChildren<Animator> ();
 		shipAnim = GetComponent<Animator>();
 
@@ -37,7 +41,6 @@ public class PlayerControl : MonoBehaviour
 	public Quaternion rotation = Quaternion.identity;
 	void Update ()
 	{
-
 		Vector3 playerPos = Player.transform.position;
 		targetSpeedY = Input.GetAxisRaw ("Vertical") * speed;
 		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
@@ -83,8 +86,9 @@ public class PlayerControl : MonoBehaviour
 			}
 			
 		}
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.Space)&& shieldAvailable == true) {
 			GameObject sh = Instantiate( Shield, transform.position, transform.rotation)as GameObject;
+			Debug.Log ("dasda");
 		}
 
 	
@@ -97,6 +101,10 @@ public class PlayerControl : MonoBehaviour
 
 	void OnCollisionEnter (Collision c)
 	{
+		if (c.transform.tag == "Shield") {
+			shieldAvailable = true;
+		}
+
 		if (c.transform.tag == "Enemy" || c.transform.tag == "enemyBullet") {
 //			gameController.subractLife ();
 			playerHit = true;
