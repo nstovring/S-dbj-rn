@@ -16,7 +16,6 @@ public class PlayerControl : MonoBehaviour
 	public Animator anim;
 	//public PickUps pickUP;
 	Animator shipAnim;
-	bool s;
 	bool shieldAvailable;
 
 	public BulletManager bulletManager;
@@ -88,7 +87,7 @@ public class PlayerControl : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.Space)&& shieldAvailable == true) {
 			GameObject sh = Instantiate( Shield, transform.position, transform.rotation)as GameObject;
-			Debug.Log ("dasda");
+			shieldAvailable = false;
 		}
 
 	

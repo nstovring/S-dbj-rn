@@ -6,6 +6,7 @@ public class PickUps : MonoBehaviour {
 		shield
 	}
 	public pickUPtype pickUP;
+	float i;
 	//Transform Playerpos;
 
 	void Start () {
@@ -14,8 +15,14 @@ public class PickUps : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		SineMove ();
 	}
+	void SineMove(){
+	
+		transform.position += new Vector3(0,Mathf.Sin(Time.deltaTime),0);
+		i+= Time.deltaTime;
+	}
+
 
 	void OnCollisionEnter (Collision c)
 	{
