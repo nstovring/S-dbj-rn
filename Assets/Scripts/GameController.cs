@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		timePassed += Time.deltaTime;
 		string liv = " " + lives;
-//		life.text = liv;
 
 		if (timePassed > 2 && timePassed < 3) {
 			pickUP.pathModes = Spawner.SpawnPaths.Horizontal;
@@ -37,6 +36,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void subractLife(){
+		if(life != null){
 		lives = lives - 1;
+		}
 	}
 }

@@ -13,26 +13,12 @@ public class Enemy : MonoBehaviour {
 	public GameObject Explosion;
 	// Use this for initialization
 
-	public enum MovementTypes{
-		Clamp,
-		Horizontal,
-		Vertical,
-		ZigZag,
-		Waiting,
-		easy
-	}
-
-	public MovementTypes myType = MovementTypes.easy;
 	private GameObject player;
 	private p path;
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		followPath = GetComponent<FollowPath>();
 		player = GameObject.FindGameObjectWithTag("Player");
-		if(myType == MovementTypes.easy){
-			//path = GameObject.FindGameObjectWithTag("easyPath").GetComponent<p>();
-			//followPath.Move(path);
-		}
 	}
 	
 	// Update is called once per frame
@@ -50,7 +36,7 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	float stayTime = 10;
+	public float stayTime = 10;
 
 	void Update () {
 	//	gameObject.GetComponent<Material>().SetColor(Color.white);
@@ -63,12 +49,9 @@ public class Enemy : MonoBehaviour {
 		SineMove();
 	}
 
-	float i;
-	float amplitude = 0.3f;
-	float frequency = 0.3f;
+	public float amplitude = 0.3f;
+	public float frequency = 0.3f;
 	void SineMove(){
-		//transform.position += new Vector3(0,Mathf.Sin(Time.deltaTime),0);
-		i+= Time.deltaTime;
 
 		transform.position += amplitude*(Mathf.Sin(2*Mathf.PI*frequency*Time.time) - Mathf.Sin(2*Mathf.PI*frequency*(Time.time - Time.deltaTime)))*transform.up;
 	}
@@ -83,6 +66,7 @@ public class Enemy : MonoBehaviour {
 	public void ExitLevel(){
 		p path = GameObject.FindGameObjectWithTag("exitPath").GetComponent<p>();
 		followPath.Move(path);
+		//Destroy(gameObject, 10);
 		exited = true;
 	}
 

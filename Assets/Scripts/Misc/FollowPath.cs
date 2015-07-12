@@ -59,8 +59,18 @@ public class FollowPath : MonoBehaviour
 
 		var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;
 		if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal) {
+			if(_currentPoint.Current == Path.Points[Path.Points.Length-1] && Path.Type == p.LoopType.NoLoop){
+				Destroy(gameObject);
+			}else{
 			_currentPoint.MoveNext();
-				}
+			}
 		}
+
+		if(_currentPoint.Current == null){
+			Destroy(gameObject);
+		}
+
+	}
+		
 
 }
