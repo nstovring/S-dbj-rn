@@ -34,7 +34,7 @@ public class FollowPath : MonoBehaviour
 		if (_currentPoint.Current == null) {
 			return;
 		}
-		_currentPoint.MoveNext();
+		//_currentPoint.MoveNext();
 	}
 
 	public void Update()

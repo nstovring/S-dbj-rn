@@ -64,9 +64,13 @@ public class Enemy : MonoBehaviour {
 	}
 
 	float i;
+	float amplitude = 0.5f;
+	float frequency = 0.5f;
 	void SineMove(){
-		transform.position += new Vector3(0,Mathf.Sin(Time.deltaTime),0);
+		//transform.position += new Vector3(0,Mathf.Sin(Time.deltaTime),0);
 		i+= Time.deltaTime;
+
+		transform.position += amplitude*(Mathf.Sin(2*Mathf.PI*frequency*Time.time) - Mathf.Sin(2*Mathf.PI*frequency*(Time.time - Time.deltaTime)))*transform.up;
 	}
 
 	void LookAtPlayer(){

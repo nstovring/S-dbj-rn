@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class EnemyAttacking : MonoBehaviour {
 
-	public Text lives;
 	public float fireRate = 1f;
 	public float bulletSpeed = 1;
 	float timePassed;
@@ -71,26 +70,14 @@ public class EnemyAttacking : MonoBehaviour {
 	float spreadShotFireRate = 2;
 	float spreadInterval = 0.1f;
 	public int spreadShots = 50;
+	private float angle;
+	//private int maxShots = spreadShots;
+	int direction = 1;
 	void SpreadShot(){
 		float burstInterval = 0.1f;
 		timePassed += Time.deltaTime;
-		//Debug.Log (shots);
-		//spreadShotFiringPoints[0].eulerAngles = Vector3.Lerp(spreadShotFiringPoints[0].eulerAngles, new Vector3(0,0,180),0.1f );
-		//spreadShotFiringPoints[1].eulerAngles = Vector3.Lerp(spreadShotFiringPoints[1].eulerAngles, new Vector3(0,0,-180f),0.1f);
 		if(timePassed> spreadShotFireRate){
-			spreadShotFiringPoints[0].eulerAngles = Vector3.Lerp(spreadShotFiringPoints[0].eulerAngles, new Vector3(0,0,180),0.01f );
-			spreadShotFiringPoints[1].eulerAngles = Vector3.Lerp(spreadShotFiringPoints[1].eulerAngles, new Vector3(0,0,-180f),0.01f);
-			/*foreach (Transform firingPoint in spreadShotFiringPoints){
-				Quaternion rotation;
-				//firingPoint.rotation = rotation.eulerAngles(new Vector3(0,0,90));
-				firingPoint.eulerAngles = Vector3.Lerp(firingPoint.eulerAngles, new Vector3(0,0,90),0.01f);
-				//firingPoint.RotateAround(firingPoint.transform.position,new Vector3(0,0,1),90*Time.deltaTime);
-			}*/
-
-
-
 			IntervalPassed +=Time.deltaTime;
-
 			if(IntervalPassed> spreadInterval){
 				spreadShots--;
 				foreach (Transform firingPoint in spreadShotFiringPoints){
@@ -101,7 +88,7 @@ public class EnemyAttacking : MonoBehaviour {
 			}
 			if(spreadShots<= 0){
 				timePassed = 0;
-				spreadShots = 50;
+				spreadShots = 20;
 			}
 		}
 	}
