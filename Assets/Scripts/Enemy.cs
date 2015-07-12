@@ -59,13 +59,13 @@ public class Enemy : MonoBehaviour {
 		if(stayTime <= 0 && !exited){
 			ExitLevel();
 		}
-		LookAtPlayer();
+		//LookAtPlayer();
 		SineMove();
 	}
 
 	float i;
-	float amplitude = 0.5f;
-	float frequency = 0.5f;
+	float amplitude = 0.3f;
+	float frequency = 0.3f;
 	void SineMove(){
 		//transform.position += new Vector3(0,Mathf.Sin(Time.deltaTime),0);
 		i+= Time.deltaTime;

@@ -14,9 +14,14 @@ public class TestingRotation : MonoBehaviour {
 	void turnAngle(Vector3 Angle){
 
 	}
-	
+
+	public bool inverse;
 	// Update is called once per frame
 	void Update () {
-		transform.eulerAngles = new Vector3(0,0,inputStartAngle + Mathf.PingPong(Time.time*turnSpeed,inputAngleMax));
+		if(inverse){
+			transform.localEulerAngles = new Vector3(0,0,inputStartAngle + (Mathf.PingPong(Time.time*turnSpeed,inputAngleMax))*-1);
+		}else{
+			transform.localEulerAngles  = new Vector3(0,0,inputStartAngle + Mathf.PingPong(Time.time*turnSpeed,inputAngleMax));
+		}
 	}
 }

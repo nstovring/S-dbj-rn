@@ -9,59 +9,69 @@ public class EnemyAttacking : MonoBehaviour {
 	float timePassed;
 	public Transform bulletSpawn;
 	public GameObject tempBullet;
-
+	public Transform MainCannon;
+	GameObject player;
 	public delegate void ShootingMode();
 	ShootingMode myShootingMode;
 
 	public enum FireMode{
-		Simple, Burst, Automatic, Spread 
+		Simple, Burst, Automatic, Spread, BurstAndSpread 
 	}
 
 	public FireMode fireMode = FireMode.Simple;
 	// Use this for initialization
 	void Start () {
+		player = GameObject.FindGameObjectWithTag("Player");
+		if(fireMode == FireMode.Simple){
+			myShootingMode = SimpleFire;
+		}
+		if(fireMode == FireMode.Burst){
+			myShootingMode = Burst;
+		}
+		if(fireMode == FireMode.Spread){
+			myShootingMode =SpreadShot;
+		}
+		if(fireMode == FireMode.BurstAndSpread){
+			myShootingMode +=SpreadShot;
+			myShootingMode +=Burst;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(fireMode == FireMode.Simple){
-			SimpleFire();
-		}
-		if(fireMode == FireMode.Burst){
-			Burst ();
-		}
-		if(fireMode == FireMode.Spread){
-			SpreadShot();
+		if(myShootingMode != null){
+			myShootingMode();
 		}
 	}
 
 	void SimpleFire(){
 		timePassed += Time.deltaTime;
 		if(timePassed> fireRate){
-		Shoot();
+			Shoot(MainCannon);
 		timePassed = 0;
 		}
 	}
 
-	float IntervalPassed = 0f;
+	float burstIntervalPassed = 0f;
 	float burstFireRate = 2;
-	int shots = 4;
+	int burstShots = 4;
 
 	void Burst(){
+		LookAtPlayer();
 		float burstInterval = 0.1f;
 		timePassed += Time.deltaTime;
 		//Debug.Log (shots);
 		if(timePassed> burstFireRate){
-			IntervalPassed +=Time.deltaTime;
+			burstIntervalPassed +=Time.deltaTime;
 			//Debug.Log(IntervalPassed);
-			if(IntervalPassed> burstInterval){
-			shots--;
-			Shoot();
-			IntervalPassed = 0;
+			if(burstIntervalPassed> burstInterval){
+				burstShots--;
+			Shoot(MainCannon);
+				burstIntervalPassed = 0;
 			}
-			if(shots<= 0){
+			if(burstShots<= 0){
 			timePassed = 0;
-			shots = 4;
+				burstShots = 4;
 			}
 		}
 	}
@@ -69,39 +79,40 @@ public class EnemyAttacking : MonoBehaviour {
 	public Transform[] spreadShotFiringPoints = new Transform[2];
 	float spreadShotFireRate = 2;
 	float spreadInterval = 0.1f;
+	float spreadIntervalPassed = 0f;
+	float spreadTimePassed;
 	public int spreadShots = 50;
 	private float angle;
 	//private int maxShots = spreadShots;
 	int direction = 1;
 	void SpreadShot(){
 		float burstInterval = 0.1f;
-		timePassed += Time.deltaTime;
-		if(timePassed> spreadShotFireRate){
-			IntervalPassed +=Time.deltaTime;
-			if(IntervalPassed> spreadInterval){
+		spreadTimePassed += Time.deltaTime;
+		if(spreadTimePassed> spreadShotFireRate){
+			spreadIntervalPassed +=Time.deltaTime;
+			if(spreadIntervalPassed> spreadInterval){
 				spreadShots--;
 				foreach (Transform firingPoint in spreadShotFiringPoints){
-					GameObject clone = Instantiate (tempBullet, firingPoint.position, firingPoint.rotation)as GameObject;
-					clone.GetComponent<Rigidbody>().AddForce(-firingPoint.up * 100* bulletSpeed);
+					Shoot(firingPoint);
 				}
-				IntervalPassed = 0;
+				spreadIntervalPassed = 0;
 			}
 			if(spreadShots<= 0){
-				timePassed = 0;
+				spreadTimePassed = 0;
 				spreadShots = 20;
 			}
 		}
 	}
-
-
-	void Shoot(){
-		//GameObject clone;
-		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
-		//transform.TransformDirection()
-		//clone.GetComponent<Rigidbody>().AddForce(0,-bulletSpeed*100,0);
-		clone.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
-
+	void LookAtPlayer(){
+		var dir = player.transform.position - transform.position;
+		var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		MainCannon.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+		//transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 	}
 
-
+	void Shoot(Transform cannon){
+		//GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+		GameObject clone = Instantiate (tempBullet, cannon.position, cannon.rotation)as GameObject;
+		clone.GetComponent<Rigidbody>().AddForce(-cannon.up * 100* bulletSpeed);
+	}
 }
