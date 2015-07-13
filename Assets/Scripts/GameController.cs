@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
 	public int maxTime =10;
 	public p[] paths = new p[8];
 	bool resetCounter = false;
+	bool startReset= false;
 	// Use this for initialization
 	void Start () {
 		spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
@@ -22,21 +23,41 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		startReset = true;
 		timePassed += Time.deltaTime;
-		string liv = " " + lives;
-		if (resetCounter) {
-			spawner.counter = 0;
+		//string liv = " " + lives;
+		if (resetCounter == true) {
+			spawner.setAmount(0);
 		}
 
 		if (timePassed > minTime && timePassed < maxTime) {
 			resetCounter = false;
-			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0], 1);
+			startReset = false;
+			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0], 3);
+
 		} 
 
-		if (timePassed > 10 && timePassed < 15) {
+
+		if (timePassed > 11 && timePassed < 15) {
 			resetCounter = false;
-			spawner.spawnOne(paths[2], enemies[1], 2);
+			startReset= false;
+			spawner.spawnOne(paths[1], enemies[1], 2);
 		}
+
+
+		if (timePassed > 17 && timePassed < 21) {
+			resetCounter = false;
+			startReset=false;
+			spawner.spawnTwo (paths [0], enemies [0], paths [1], enemies [0], 5);
+		
+		}
+
+
+		if (startReset == true) {
+			Debug.Log("test");
+			resetCounter = true;
+		}
+
 
 	}
 
@@ -45,4 +66,5 @@ public class GameController : MonoBehaviour {
 		lives = lives - 1;
 		}
 	}
+
 }
