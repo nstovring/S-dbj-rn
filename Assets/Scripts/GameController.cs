@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
 	public int minTime = 5;
 	public int maxTime =10;
 	public p[] paths = new p[8];
+	bool resetCounter = false;
 	// Use this for initialization
 	void Start () {
 		spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
@@ -23,16 +24,18 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		timePassed += Time.deltaTime;
 		string liv = " " + lives;
-
+		if (resetCounter) {
+			spawner.counter = 0;
+		}
 
 		if (timePassed > minTime && timePassed < maxTime) {
-			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0]);
-			spawner.maxCurrentSpawn = 10;
+			resetCounter = false;
+			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0], 1);
 		} 
 
 		if (timePassed > 10 && timePassed < 15) {
-			spawner.spawnOne(paths[2], enemies[1]);
-			spawner.maxCurrentSpawn = 1;
+			resetCounter = false;
+			spawner.spawnOne(paths[2], enemies[1], 2);
 		}
 
 	}

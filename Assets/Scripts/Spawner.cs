@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
 	public float spawnTime = 1f;
 	public int maxCurrentSpawn = 10;
 	public GameObject enemy;
+	public int counter = 0;
 	// Use this for initialization
 	public p path;
 
@@ -56,27 +57,30 @@ public class Spawner : MonoBehaviour
 		*/
 
 	}
-	public void spawnOne(p path1, GameObject enemy){
+	public void spawnOne(p path1, GameObject enemy, int amount){
 		timePassed += Time.deltaTime;
-		if (timePassed > spawnTime && maxCurrentSpawn >= 0) {
+		maxCurrentSpawn=amount;
+		if (timePassed > spawnTime && counter <= maxCurrentSpawn) {
 			GameObject clone = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
 			clone.GetComponent<FollowPath> ().Move (path1);
-			maxCurrentSpawn--;
+			counter++;
 			timePassed = 0;
 		}
 	}
 
-	public void spawnTwo(p path1, GameObject enemy1, p path2, GameObject enemy2){
+	public void spawnTwo(p path1, GameObject enemy1, p path2, GameObject enemy2,int amount){
 			timePassed += Time.deltaTime;
-			if (timePassed > spawnTime && maxCurrentSpawn >= 0) {
+		    maxCurrentSpawn=amount;
+			
+			if (timePassed > spawnTime && counter <= maxCurrentSpawn) {
 
 				GameObject clone = Instantiate (enemy1, transform.position, Quaternion.identity) as GameObject;
 				clone.GetComponent<FollowPath>().Move(path1);
 				
 				GameObject clone1 = Instantiate (enemy2, transform.position, Quaternion.identity) as GameObject;
 				clone1.GetComponent<FollowPath>().Move(path2);
+			counter++;
 
-				maxCurrentSpawn--;
 				timePassed = 0;
 			}
 
