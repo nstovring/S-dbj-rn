@@ -31,12 +31,17 @@ public class Enemy : MonoBehaviour {
 		if(enemyHit){
 			timePassed += Time.deltaTime;
 			if(timePassed < .5f && timePassed > 0){
-				gameObject.GetComponent<SpriteRenderer>().material.color = Color.red;
+				gameObject.GetComponent<SpriteRenderer>().material.color = Color.Lerp(Color.white, Color.red, 0.5f);
+				gameObject.GetComponentInChildren<SpriteRenderer>().material.color =  Color.Lerp(Color.white, Color.red, 0.5f);
+
+				//gameObject.GetComponent<SpriteRenderer>().material.color = Color.red;
 			}
 			else{
 				timePassed = 0;
 				enemyHit = false;
 				gameObject.GetComponent<SpriteRenderer>().material.color = Color.white;
+				gameObject.GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
+
 			}
 		}
 	}
