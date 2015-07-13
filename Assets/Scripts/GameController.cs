@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 	public Spawner pickUP;
 	public int minTime = 5;
 	public int maxTime =10;
+	public p[] paths = new p[8];
 	// Use this for initialization
 	void Start () {
 		spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
@@ -20,24 +21,20 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		spawner.enemy = enemies[EnemyID];
 		timePassed += Time.deltaTime;
 		string liv = " " + lives;
 
 
 		if (timePassed > minTime && timePassed < maxTime) {
-			EnemyID = 0;
-			spawner.pathModes = Spawner.SpawnPaths.easyPath;
-			spawner.maxCurrentSpawn = 5;
-		} else {
-			spawner.pathModes = Spawner.SpawnPaths.Waiting;		}
+			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0]);
+			spawner.maxCurrentSpawn = 10;
+		} 
 
 		if (timePassed > 10 && timePassed < 15) {
-			EnemyID = 1;
-			spawner.enemy = enemies[EnemyID];
-			spawner.pathModes = Spawner.SpawnPaths.easyPath;
-			spawner.maxCurrentSpawn = 5;
+			spawner.spawnOne(paths[2], enemies[1]);
+			spawner.maxCurrentSpawn = 1;
 		}
+
 	}
 
 	public void subractLife(){

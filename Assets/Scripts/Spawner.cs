@@ -30,6 +30,7 @@ public class Spawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		/*
 		if(pathModes == SpawnPaths.Horizontal){
 			path = GameObject.FindGameObjectWithTag("horizontalPath").GetComponent<p>(); 
 		}
@@ -52,5 +53,33 @@ public class Spawner : MonoBehaviour
 				timePassed = 0;
 			}
 		}
+		*/
+
+	}
+	public void spawnOne(p path1, GameObject enemy){
+		timePassed += Time.deltaTime;
+		if (timePassed > spawnTime && maxCurrentSpawn >= 0) {
+			GameObject clone = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
+			clone.GetComponent<FollowPath> ().Move (path1);
+			maxCurrentSpawn--;
+			timePassed = 0;
+		}
+	}
+
+	public void spawnTwo(p path1, GameObject enemy1, p path2, GameObject enemy2){
+			timePassed += Time.deltaTime;
+			if (timePassed > spawnTime && maxCurrentSpawn >= 0) {
+
+				GameObject clone = Instantiate (enemy1, transform.position, Quaternion.identity) as GameObject;
+				clone.GetComponent<FollowPath>().Move(path1);
+				
+				GameObject clone1 = Instantiate (enemy2, transform.position, Quaternion.identity) as GameObject;
+				clone1.GetComponent<FollowPath>().Move(path2);
+
+				maxCurrentSpawn--;
+				timePassed = 0;
+			}
+
+
 	}
 }

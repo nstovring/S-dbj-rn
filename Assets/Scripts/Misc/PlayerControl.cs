@@ -5,6 +5,7 @@ public class PlayerControl : MonoBehaviour
 {
 	public GameObject Player;
 	public GameObject Shield;
+	public Sprite shieldAvailableS; 
 	public float speed = 8;
 	public float fireRate = 0.25f;
 	private float targetSpeedY;
@@ -12,6 +13,7 @@ public class PlayerControl : MonoBehaviour
 	private float currentspeedy;
 	private float targetSpeed;
 	private Vector2 amountToMove;
+	private SpriteRenderer spriteRenderer;
 	private bool playerHit = false;
 	public Animator anim;
 	//public PickUps pickUP;
@@ -26,6 +28,7 @@ public class PlayerControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		spriteRenderer = GetComponent<SpriteRenderer> ();
 		//anim = GetComponentInChildren<Animator> ();
 		shipAnim = GetComponent<Animator>();
 		//	bulletPhysics = GetComponent <BulletPhysics> ();
@@ -75,6 +78,9 @@ public class PlayerControl : MonoBehaviour
 				gameObject.GetComponent<SpriteRenderer> ().material.color = Color.white;
 			}
 			
+		}
+		if (shieldAvailable == true) {
+			spriteRenderer.sprite = shieldAvailableS;
 		}
 		if (Input.GetKeyDown(KeyCode.Space)&& shieldAvailable == true) {
 			GameObject sh = Instantiate( Shield, transform.position, transform.rotation)as GameObject;
