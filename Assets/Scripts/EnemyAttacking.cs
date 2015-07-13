@@ -47,7 +47,7 @@ public class EnemyAttacking : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(myShootingMode != null){
+		if(myShootingMode != null && transform.position.y < 8.1&& transform.position.y > -10 && transform.position.x < 15 && transform.position.x > -15){
 			myShootingMode();
 		}
 	}

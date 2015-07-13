@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour {
 	public bool hasPowerUp;
 	// Use this for initialization
 	public Transform pickUp;
-	private GameObject player;
+	public GameObject player;
 	private p path;
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();

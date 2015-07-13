@@ -11,7 +11,7 @@ public class EnemyCannonControl : MonoBehaviour {
 	private GameObject player;
 	// Use this for initialization
 	void Start () {
-		//player = GetComponent;
+		player = GetComponentInParent<Enemy>().player;
 	}
 
 	
