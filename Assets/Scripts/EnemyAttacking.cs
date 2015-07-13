@@ -9,13 +9,14 @@ public class EnemyAttacking : MonoBehaviour {
 	float timePassed;
 	public Transform bulletSpawn;
 	public GameObject tempBullet;
+	public GameObject[] bulletTypes;
 	public Transform MainCannon;
 	GameObject player;
 	public delegate void ShootingMode();
 	ShootingMode myShootingMode;
 
 	public enum FireMode{
-		Simple, Burst, Automatic, Spread, BurstAndSpread, BurstNoCannon 
+		Simple, Burst, Automatic, Spread, BurstAndSpread, BurstNoCannon, SineWave 
 	}
 
 	public FireMode fireMode = FireMode.Simple;
@@ -39,12 +40,23 @@ public class EnemyAttacking : MonoBehaviour {
 		if (fireMode == FireMode.BurstNoCannon){
 			myShootingMode = burstNoCannon;
 		}
+		if (fireMode == FireMode.SineWave){
+			myShootingMode = SineWave;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(myShootingMode != null){
 			myShootingMode();
+		}
+	}
+	float sineFireRate = 0.1f;
+	void SineWave(){
+		timePassed += Time.deltaTime;
+		if(timePassed> sineFireRate){
+			SineShoot();
+			timePassed = 0;
 		}
 	}
 
@@ -144,5 +156,15 @@ public class EnemyAttacking : MonoBehaviour {
 	void Shoot(){
 		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
 		clone.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
+	}
+	void SineShoot(){
+		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+		clone.GetComponent<bulletPhysics>().bulletType = bulletPhysics.BulletTypes.sine;
+		clone.GetComponent<bulletPhysics>().reverse = -1;
+		clone.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
+
+		GameObject clone1 = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+		clone1.GetComponent<bulletPhysics>().bulletType = bulletPhysics.BulletTypes.sine;
+		clone1.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
 	}
 }
