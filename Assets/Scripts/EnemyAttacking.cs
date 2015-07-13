@@ -61,13 +61,8 @@ public class EnemyAttacking : MonoBehaviour {
 	int burstShots = 4;
 
 	void Burst(){
-<<<<<<< HEAD
 		LookAtPlayer(MainCannon);
-		float burstInterval = 0.1f;
-=======
-		LookAtPlayer();
 		float burstInterval = 0.05f;
->>>>>>> origin/Development
 		timePassed += Time.deltaTime;
 		//Debug.Log (shots);
 		if(timePassed> burstFireRate){
