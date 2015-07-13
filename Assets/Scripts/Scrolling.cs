@@ -45,7 +45,7 @@ public class Scrolling : MonoBehaviour {
 	void sky(){
 		transform.position -= new Vector3(0,Time.deltaTime*7,0);
 		if(transform.position.y <= 15 && instantiated){
-			gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color (1f,1f,1f,1f);
+			gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color (1f,1f,1f,.2f);
 			Instantiate(gameObject, new Vector3(placement,27,0),Quaternion.identity);
 			//gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color (1f,1f,1f,.5f);
 			instantiated = false;

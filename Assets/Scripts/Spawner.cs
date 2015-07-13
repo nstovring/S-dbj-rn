@@ -45,8 +45,8 @@ public class Spawner : MonoBehaviour
 				GameObject clone = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
 				clone.GetComponent<FollowPath>().Move(path);
 
-				GameObject clone1 = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
-				clone1.GetComponent<FollowPath>().Move(GameObject.FindGameObjectWithTag("zigzagPath").GetComponent<p>());
+//				GameObject clone1 = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
+//				clone1.GetComponent<FollowPath>().Move(GameObject.FindGameObjectWithTag("zigzagPath").GetComponent<p>());
 				//path.AddEnemy(clone.transform);
 				maxCurrentSpawn--;
 				timePassed = 0;

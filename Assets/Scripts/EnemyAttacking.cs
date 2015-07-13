@@ -15,7 +15,7 @@ public class EnemyAttacking : MonoBehaviour {
 	ShootingMode myShootingMode;
 
 	public enum FireMode{
-		Simple, Burst, Automatic, Spread, BurstAndSpread 
+		Simple, Burst, Automatic, Spread, BurstAndSpread, BurstNoCannon 
 	}
 
 	public FireMode fireMode = FireMode.Simple;
@@ -34,6 +34,10 @@ public class EnemyAttacking : MonoBehaviour {
 		if(fireMode == FireMode.BurstAndSpread){
 			myShootingMode +=SpreadShot;
 			myShootingMode +=Burst;
+		}
+
+		if (fireMode == FireMode.BurstNoCannon){
+			myShootingMode = burstNoCannon;
 		}
 	}
 	
@@ -57,7 +61,7 @@ public class EnemyAttacking : MonoBehaviour {
 	int burstShots = 4;
 
 	void Burst(){
-		LookAtPlayer();
+		LookAtPlayer(MainCannon);
 		float burstInterval = 0.1f;
 		timePassed += Time.deltaTime;
 		//Debug.Log (shots);
@@ -103,12 +107,36 @@ public class EnemyAttacking : MonoBehaviour {
 			}
 		}
 	}
+
+	void burstNoCannon(){
+		LookAtPlayer();
+		float burstInterval = 0.1f;
+		timePassed += Time.deltaTime;
+		//Debug.Log (shots);
+		if(timePassed> burstFireRate){
+			burstIntervalPassed +=Time.deltaTime;
+			//Debug.Log(IntervalPassed);
+			if(burstIntervalPassed> burstInterval){
+				burstShots--;
+				Shoot();
+				burstIntervalPassed = 0;
+			}
+			if(burstShots<= 0){
+				timePassed = 0;
+				burstShots = 4;
+			}
+		}
+	}
 	void LookAtPlayer(){
 		var dir = player.transform.position - transform.position;
 		var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		MainCannon.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+		transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 	}
-
+	void LookAtPlayer(Transform cannon){
+		var dir = player.transform.position - transform.position;
+		var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		cannon.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+	}
 	void Shoot(Transform cannon){
 		GameObject clone = Instantiate (tempBullet, cannon.position, cannon.rotation)as GameObject;
 		clone.GetComponent<Rigidbody>().AddForce(-cannon.up * 100* bulletSpeed);
