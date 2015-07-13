@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerPhysics : MonoBehaviour
 {
-	private BoxCollider collider;
+	private Collider collider;
 	private Vector3 s;
 	private Vector3 c;
 	public LayerMask collisionsMask;
@@ -13,9 +13,9 @@ public class PlayerPhysics : MonoBehaviour
 
 	void Start ()
 	{
-		collider = GetComponent<BoxCollider> ();
-		s = collider.size;
-		c = collider.center;
+		collider = GetComponent<Collider> ();
+		//s = collider.size;
+		//c = collider.center;
 	}
 
 	void Update(){

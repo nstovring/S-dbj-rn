@@ -1,16 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyAttacking.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Misc\p.cs">
     <Files>
-      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="118" Column="1" />
-      <File FileName="Assets\Scripts\Misc\PlayerPhysics.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Misc\FollowPath.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyAttacking.cs" Line="89" Column="4" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="29" Column="1" />
+      <File FileName="Assets\Scripts\EnemyAttacking.cs" Line="118" Column="1" />
+      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="64" Column="10" />
+      <File FileName="Assets\Scripts\Misc\PlayerPhysics.cs" Line="18" Column="5" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="76" Column="6" />
+      <File FileName="Assets\Scripts\Misc\FollowPath.cs" Line="37" Column="5" />
       <File FileName="Assets\Scripts\Misc\p.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\bulletPhysics.cs" Line="33" Column="1" />
+      <File FileName="Assets\Scripts\bulletPhysics.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BulletManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\TestingRotation.cs" Line="24" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -47,7 +47,6 @@ public class PlayerControl : MonoBehaviour
 		transform.position += new Vector3(targetSpeed,targetSpeedY,0) * Time.deltaTime;
 		amountToMove.y = targetSpeedY;
 		amountToMove.x = targetSpeed;
-		//playerPhysics.Move (amountToMove * Time.deltaTime);
 
 		if (targetSpeedY >= 0.1f) {
 			anim.SetInteger ("JetState", 1);
@@ -61,22 +60,18 @@ public class PlayerControl : MonoBehaviour
 		if(targetSpeed >= 0.1f){
 			rotation.eulerAngles = new Vector3(0,0,-15);
 			transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 0.1f );
-			//shipAnim.SetInteger("Skew", 1);
-			//Change sprite
 		}else if(targetSpeed<= -0.1f){
 			rotation.eulerAngles = new Vector3(0,0,15);
 			transform.rotation = Quaternion.Lerp(transform.rotation, rotation,  0.1f );
-			//Change sprite
-			//shipAnim.SetInteger("Skew", 2);
 		}else{
 			rotation.eulerAngles = new Vector3(0,0,0);
 			transform.rotation = Quaternion.Lerp(transform.rotation, rotation,  0.1f );
-			//shipAnim.SetInteger("Skew", 0);
 		}
 
 		if (playerHit) {
 			timePassed += Time.deltaTime;
 			if (timePassed < .5f && timePassed > 0) {
+				gameController.subractLife();
 				gameObject.GetComponent<SpriteRenderer> ().material.color = Color.red;
 			} else {
 				timePassed = 0;
