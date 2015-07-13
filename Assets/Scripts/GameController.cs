@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
 	public int maxTime =10;
 	public p[] paths = new p[8];
 	bool resetCounter = false;
-	bool startReset= false;
+
 	// Use this for initialization
 	void Start () {
 		spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
@@ -23,12 +23,14 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		bool startReset;
 		startReset = true;
 		timePassed += Time.deltaTime;
-		//string liv = " " + lives;
-		if (resetCounter == true) {
-			spawner.setAmount(0);
+
+		if (startReset) {
+			resetCounter = true;
 		}
+		//string liv = " " + lives;
 
 		if (timePassed > minTime && timePassed < maxTime) {
 			resetCounter = false;
@@ -53,10 +55,7 @@ public class GameController : MonoBehaviour {
 		}
 
 
-		if (startReset == true) {
-			Debug.Log("test");
-			resetCounter = true;
-		}
+	
 
 
 	}

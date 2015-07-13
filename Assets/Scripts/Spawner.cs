@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Debug.Log (getAmount());
+		Debug.Log (counter);
 		/*
 		if(pathModes == SpawnPaths.Horizontal){
 			path = GameObject.FindGameObjectWithTag("horizontalPath").GetComponent<p>(); 
@@ -68,6 +68,7 @@ public class Spawner : MonoBehaviour
 			timePassed = 0;
 
 		}
+		counter = 0;
 	}
 
 	public void spawnTwo(p path1, GameObject enemy1, p path2, GameObject enemy2,int amount){
@@ -81,18 +82,13 @@ public class Spawner : MonoBehaviour
 				
 				GameObject clone1 = Instantiate (enemy2, transform.position, Quaternion.identity) as GameObject;
 				clone1.GetComponent<FollowPath>().Move(path2);
-			    counter++;
+			   counter++;
 
 				timePassed = 0;
 			}
+		counter = 0;
 
 
 	}
-
-	public void setAmount(int a){
-		a = counter;
-	}
-	public int getAmount(){
-		return counter;
-	}
+	
 }
