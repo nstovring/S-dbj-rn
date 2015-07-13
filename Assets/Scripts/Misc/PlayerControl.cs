@@ -26,14 +26,10 @@ public class PlayerControl : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-
 		//anim = GetComponentInChildren<Animator> ();
 		shipAnim = GetComponent<Animator>();
-
 		//	bulletPhysics = GetComponent <BulletPhysics> ();
 		playerPhysics = GetComponent <PlayerPhysics> ();
-
-	
 	}
 	
 	// Update is called once per frame
@@ -84,13 +80,6 @@ public class PlayerControl : MonoBehaviour
 			GameObject sh = Instantiate( Shield, transform.position, transform.rotation)as GameObject;
 			shieldAvailable = false;
 		}
-
-	
-
-
-
-	
-	
 	}
 
 	void OnCollisionEnter (Collision c)
@@ -102,7 +91,6 @@ public class PlayerControl : MonoBehaviour
 		if (c.transform.tag == "Enemy" || c.transform.tag == "enemyBullet") {
 //			gameController.subractLife ();
 			playerHit = true;
-		
 		}
 	}
 

@@ -11,14 +11,19 @@ public class Enemy : MonoBehaviour {
     public Sprite newSprite; 
 	private SpriteRenderer spriteRenderer;
 	public GameObject Explosion;
+	
+	public float stayTime = 10;
+	public bool hasPowerUp;
 	// Use this for initialization
-
+	public Transform pickUp;
 	private GameObject player;
 	private p path;
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		followPath = GetComponent<FollowPath>();
 		player = GameObject.FindGameObjectWithTag("Player");
+
+
 	}
 	
 	// Update is called once per frame
@@ -36,8 +41,6 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public float stayTime = 10;
-
 	void Update () {
 	//	gameObject.GetComponent<Material>().SetColor(Color.white);
 		ColorChange();
@@ -52,7 +55,6 @@ public class Enemy : MonoBehaviour {
 	public float amplitude = 0.3f;
 	public float frequency = 0.3f;
 	void SineMove(){
-
 		transform.position += amplitude*(Mathf.Sin(2*Mathf.PI*frequency*Time.time) - Mathf.Sin(2*Mathf.PI*frequency*(Time.time - Time.deltaTime)))*transform.up;
 	}
 
@@ -84,6 +86,9 @@ public class Enemy : MonoBehaviour {
 		}
 			if(health <= 0){
 			GameObject Ex = Instantiate(Explosion, transform.position, transform.rotation)as GameObject;
+			if(hasPowerUp){
+				GameObject pickUpClone = Instantiate(pickUp,transform.position,Quaternion.identity) as GameObject;
+			}
 			Destroy(gameObject);
 			Destroy (Ex, 0.5f);
 			}

@@ -14,8 +14,6 @@ public class PlayerPhysics : MonoBehaviour
 	void Start ()
 	{
 		collider = GetComponent<Collider> ();
-		//s = collider.size;
-		//c = collider.center;
 	}
 
 	void Update(){

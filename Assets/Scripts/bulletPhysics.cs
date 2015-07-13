@@ -14,7 +14,7 @@ public class bulletPhysics : MonoBehaviour {
 	public BulletTypes bulletTypes;
 	// Use this for initialization
 	void Start () {
-		Destroy (gameObject, 3);
+		Destroy (gameObject, 5);
 	}
 	// Update is called once per frame
 
