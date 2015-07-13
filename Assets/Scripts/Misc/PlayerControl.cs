@@ -71,7 +71,7 @@ public class PlayerControl : MonoBehaviour
 		if (playerHit) {
 			timePassed += Time.deltaTime;
 			if (timePassed < .5f && timePassed > 0) {
-				gameController.subractLife();
+				//gameController.subractLife();
 				gameObject.GetComponent<SpriteRenderer> ().material.color = Color.red;
 			} else {
 				timePassed = 0;

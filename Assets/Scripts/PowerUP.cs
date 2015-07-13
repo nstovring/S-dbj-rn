@@ -8,6 +8,7 @@ public class PowerUP : MonoBehaviour {
 	}
 	public powerUp powerUP;
 	Transform Playerpos;
+	public int shieldTime = 5;
 	// Use this for initialization
 	void Start () {
 	
@@ -24,7 +25,7 @@ public class PowerUP : MonoBehaviour {
 		transform.RotateAround (transform.position, new Vector3 (0, 0, 1),Time.deltaTime*100);	
 		Playerpos = GameObject.Find ("Player").GetComponent<Transform> ();
 		transform.position = Playerpos.position;
-		Destroy (gameObject, 5);
+		Destroy (gameObject, shieldTime);
 		Debug.Log("dasd");
 	}
 
