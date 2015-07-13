@@ -58,7 +58,7 @@ public class EnemyAttacking : MonoBehaviour {
 
 	void Burst(){
 		LookAtPlayer();
-		float burstInterval = 0.1f;
+		float burstInterval = 0.05f;
 		timePassed += Time.deltaTime;
 		//Debug.Log (shots);
 		if(timePassed> burstFireRate){
@@ -81,7 +81,7 @@ public class EnemyAttacking : MonoBehaviour {
 	float spreadInterval = 0.1f;
 	float spreadIntervalPassed = 0f;
 	float spreadTimePassed;
-	public int spreadShots = 20;
+	public int spreadShots = 10;
 	private float angle;
 	//private int maxShots = spreadShots;
 	int direction = 1;
@@ -99,7 +99,7 @@ public class EnemyAttacking : MonoBehaviour {
 			}
 			if(spreadShots<= 0){
 				spreadTimePassed = 0;
-				spreadShots = 20;
+				spreadShots = 10;
 			}
 		}
 	}
