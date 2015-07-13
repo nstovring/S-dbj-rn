@@ -16,11 +16,12 @@ public class PickUps : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		SineMove ();
+		transform.position -= new Vector3(0,Time.deltaTime,0);
 	}
+	public float amplitude = 0.3f;
+	public float frequency = 0.3f;
 	void SineMove(){
-	
-		transform.position += new Vector3(0,Mathf.Sin(Time.deltaTime),0);
-		i+= Time.deltaTime;
+		transform.position += amplitude*(Mathf.Sin(2*Mathf.PI*frequency*Time.time) - Mathf.Sin(2*Mathf.PI*frequency*(Time.time - Time.deltaTime)))*transform.up;
 	}
 
 

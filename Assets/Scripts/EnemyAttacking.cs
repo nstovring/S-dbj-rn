@@ -77,11 +77,11 @@ public class EnemyAttacking : MonoBehaviour {
 	}
 
 	public Transform[] spreadShotFiringPoints = new Transform[2];
-	float spreadShotFireRate = 2;
+	float spreadShotFireRate = 5;
 	float spreadInterval = 0.1f;
 	float spreadIntervalPassed = 0f;
 	float spreadTimePassed;
-	public int spreadShots = 50;
+	public int spreadShots = 20;
 	private float angle;
 	//private int maxShots = spreadShots;
 	int direction = 1;
@@ -107,12 +107,14 @@ public class EnemyAttacking : MonoBehaviour {
 		var dir = player.transform.position - transform.position;
 		var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		MainCannon.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
-		//transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 	}
 
 	void Shoot(Transform cannon){
-		//GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
 		GameObject clone = Instantiate (tempBullet, cannon.position, cannon.rotation)as GameObject;
 		clone.GetComponent<Rigidbody>().AddForce(-cannon.up * 100* bulletSpeed);
+	}
+	void Shoot(){
+		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+		clone.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
 	}
 }
