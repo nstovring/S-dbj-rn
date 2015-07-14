@@ -22,8 +22,6 @@ public class Enemy : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		followPath = GetComponent<FollowPath>();
 		player = GameObject.FindGameObjectWithTag("Player");
-
-
 	}
 	
 	// Update is called once per frame
@@ -47,6 +45,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Update () {
+		//player = GameObject.FindGameObjectWithTag("Player");
+
 	//	gameObject.GetComponent<Material>().SetColor(Color.white);
 		ColorChange();
 		stayTime -= Time.deltaTime;

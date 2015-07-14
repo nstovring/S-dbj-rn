@@ -24,30 +24,23 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timePassed += Time.deltaTime;
-
-
 		//string liv = " " + lives;
 
-		if (timePassed > 0 && timePassed < 10) {
-			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0], 2);
-
-		} 
-
+		if (timePassed > 0 && timePassed < 10f ) { 
+			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0], 2,1);
+			return;
+		}
 
 		if (timePassed > 11 && timePassed < 15) {
-			spawner.spawnOne(paths[1], enemies[1], 2);
+			spawner.spawnOne(paths[1], enemies[1], 2,1);
+			return;
 		}
-
 
 		if (timePassed > 17 && timePassed < 21) {
-			spawner.spawnTwo (paths [0], enemies [0], paths [1], enemies [0], 2);
-		
+			spawner.spawnTwo (paths [0], enemies [0], paths [1], enemies [0], 2,1);
+			return;
 		}
-
-
-	
-
-
+		spawner.counter = 0;
 	}
 
 	public void subractLife(){

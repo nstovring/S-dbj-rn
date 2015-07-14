@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
 	public float spawnTime = 1f;
 	public int maxCurrentSpawn = 10;
 	public GameObject enemy;
-	public int counter;
+	public int counter = 0;
 	bool isSpawning;
 	// Use this for initialization
 	public p path;
@@ -32,56 +32,28 @@ public class Spawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		/*
-		if(pathModes == SpawnPaths.Horizontal){
-			path = GameObject.FindGameObjectWithTag("horizontalPath").GetComponent<p>(); 
-		}
-		if(pathModes == SpawnPaths.easyPath){
-			path = GameObject.FindGameObjectWithTag("easyPath").GetComponent<p>(); 
-		}
-		if(pathModes == SpawnPaths.ZigZag){
-			path = GameObject.FindGameObjectWithTag("zigzagPath").GetComponent<p>(); 
-		}
-		if(pathModes != SpawnPaths.Waiting){
-			timePassed += Time.deltaTime;
-			if (timePassed > spawnTime && maxCurrentSpawn >= 0) {
-				GameObject clone = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
-				clone.GetComponent<FollowPath>().Move(path);
-
-//				GameObject clone1 = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
-//				clone1.GetComponent<FollowPath>().Move(GameObject.FindGameObjectWithTag("zigzagPath").GetComponent<p>());
-				//path.AddEnemy(clone.transform);
-				maxCurrentSpawn--;
-				timePassed = 0;
-			}
-		}
-		*/
-
+	
 	}
-	public void spawnOne(p path1, GameObject enemy, int amount){
+	public void spawnOne(p path1, GameObject enemy, int amount, float spawnRate){
+		spawnTime = spawnRate;
 		timePassed += Time.deltaTime;
 		maxCurrentSpawn = amount;
-		if (timePassed > spawnTime && counter < maxCurrentSpawn && isSpawning) {
+		Debug.Log(counter);
+
+		if (timePassed > spawnTime && counter < maxCurrentSpawn) {
 			GameObject clone = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
 			clone.GetComponent<FollowPath> ().Move (path1);
 			counter++;
 			timePassed = 0;
-			Debug.Log (counter);
-
-		} else if(counter == maxCurrentSpawn){
-			counter = 0;
-			Debug.Log ("fasfga");
-			isSpawning = false;
-
-		}
-
+		} 
 	}
-
-	public void spawnTwo(p path1, GameObject enemy1, p path2, GameObject enemy2,int amount){
+	
+	public void spawnTwo(p path1, GameObject enemy1, p path2, GameObject enemy2,int amount, float spawnRate){
+		spawnTime = spawnRate;
 			timePassed += Time.deltaTime;
 		    maxCurrentSpawn = amount;
 			
-			if (timePassed > spawnTime && counter <= maxCurrentSpawn) {
+			if (timePassed > spawnTime && counter < maxCurrentSpawn) {
 
 			GameObject clone = Instantiate (enemy1, transform.position, Quaternion.identity) as GameObject;
 			clone.GetComponent<FollowPath> ().Move (path1);
@@ -92,11 +64,9 @@ public class Spawner : MonoBehaviour
 
 			timePassed = 0;
 		} else if(counter == maxCurrentSpawn){
-			counter = 0;
+			//counter = 0;
 			Debug.Log ("fasfga");
 		}
-
-
 
 	}
 	

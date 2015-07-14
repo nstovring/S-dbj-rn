@@ -12,6 +12,7 @@ public class EnemyCannonControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GetComponentInParent<Enemy>().player;
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	
