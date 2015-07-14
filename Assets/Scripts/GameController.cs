@@ -23,34 +23,24 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		bool startReset;
-		startReset = true;
 		timePassed += Time.deltaTime;
 
-		if (startReset) {
-			resetCounter = true;
-		}
+
 		//string liv = " " + lives;
 
-		if (timePassed > minTime && timePassed < maxTime) {
-			resetCounter = false;
-			startReset = false;
-			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0], 3);
+		if (timePassed > 0 && timePassed < 10) {
+			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0], 2);
 
 		} 
 
 
 		if (timePassed > 11 && timePassed < 15) {
-			resetCounter = false;
-			startReset= false;
 			spawner.spawnOne(paths[1], enemies[1], 2);
 		}
 
 
 		if (timePassed > 17 && timePassed < 21) {
-			resetCounter = false;
-			startReset=false;
-			spawner.spawnTwo (paths [0], enemies [0], paths [1], enemies [0], 5);
+			spawner.spawnTwo (paths [0], enemies [0], paths [1], enemies [0], 2);
 		
 		}
 
