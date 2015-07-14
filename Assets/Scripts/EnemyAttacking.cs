@@ -9,6 +9,7 @@ public class EnemyAttacking : MonoBehaviour {
 	float timePassed;
 	public Transform bulletSpawn;
 	public GameObject tempBullet;
+	public GameObject[] bullets = new GameObject[2];
 	public GameObject[] bulletTypes;
 	public Transform MainCannon;
 	GameObject player;
@@ -55,7 +56,7 @@ public class EnemyAttacking : MonoBehaviour {
 	void SineWave(){
 		timePassed += Time.deltaTime;
 		if(timePassed> sineFireRate){
-			SineShoot();
+			SineShoot(bullets[2]);
 			timePassed = 0;
 		}
 	}
@@ -63,7 +64,7 @@ public class EnemyAttacking : MonoBehaviour {
 	void SimpleFire(){
 		timePassed += Time.deltaTime;
 		if(timePassed> fireRate){
-			Shoot(MainCannon);
+			Shoot(MainCannon, bullets[0]);
 		timePassed = 0;
 		}
 	}
@@ -82,7 +83,7 @@ public class EnemyAttacking : MonoBehaviour {
 			//Debug.Log(IntervalPassed);
 			if(burstIntervalPassed> burstInterval){
 				burstShots--;
-			Shoot(MainCannon);
+			    Shoot(MainCannon, bullets[2]);
 				burstIntervalPassed = 0;
 			}
 			if(burstShots<= 0){
@@ -109,7 +110,7 @@ public class EnemyAttacking : MonoBehaviour {
 			if(spreadIntervalPassed> spreadInterval){
 				spreadShots--;
 				foreach (Transform firingPoint in spreadShotFiringPoints){
-					Shoot(firingPoint);
+					Shoot(firingPoint, bullets[1]);
 				}
 				spreadIntervalPassed = 0;
 			}
@@ -130,7 +131,7 @@ public class EnemyAttacking : MonoBehaviour {
 			//Debug.Log(IntervalPassed);
 			if(burstIntervalPassed> burstInterval){
 				burstShots--;
-				Shoot();
+				Shoot(bullets[0]);
 				burstIntervalPassed = 0;
 			}
 			if(burstShots<= 0){
@@ -149,21 +150,21 @@ public class EnemyAttacking : MonoBehaviour {
 		var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		cannon.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 	}
-	void Shoot(Transform cannon){
-		GameObject clone = Instantiate (tempBullet, cannon.position, cannon.rotation)as GameObject;
+	void Shoot(Transform cannon, GameObject a){
+		GameObject clone = Instantiate (a, cannon.position, cannon.rotation)as GameObject;
 		clone.GetComponent<Rigidbody>().AddForce(-cannon.up * 100* bulletSpeed);
 	}
-	void Shoot(){
-		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+	void Shoot(GameObject a){
+		GameObject clone = Instantiate (a, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
 		clone.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
 	}
-	void SineShoot(){
-		GameObject clone = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+	void SineShoot(GameObject a){
+		GameObject clone = Instantiate (a, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
 		clone.GetComponent<bulletPhysics>().bulletType = bulletPhysics.BulletTypes.sine;
 		clone.GetComponent<bulletPhysics>().reverse = -1;
 		clone.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
 
-		GameObject clone1 = Instantiate (tempBullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
+		GameObject clone1 = Instantiate (a, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
 		clone1.GetComponent<bulletPhysics>().bulletType = bulletPhysics.BulletTypes.sine;
 		clone1.GetComponent<Rigidbody>().AddForce(-transform.up * 100* bulletSpeed);
 	}
