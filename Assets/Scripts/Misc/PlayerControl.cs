@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 	public GameObject Player;
 	public GameObject Shield;
 	public Sprite shieldAvailableS; 
+	public Sprite Standard;
 	public float speed = 8;
 	public float fireRate = 0.25f;
 	private float targetSpeedY;
@@ -81,6 +82,8 @@ public class PlayerControl : MonoBehaviour
 		}
 		if (shieldAvailable == true) {
 			spriteRenderer.sprite = shieldAvailableS;
+		} else {
+			spriteRenderer.sprite = Standard;
 		}
 		if (Input.GetKeyDown(KeyCode.Space)&& shieldAvailable == true) {
 			GameObject sh = Instantiate( Shield, transform.position, transform.rotation)as GameObject;
@@ -99,17 +102,4 @@ public class PlayerControl : MonoBehaviour
 			playerHit = true;
 		}
 	}
-
-	private float IncrementTowards (float n, float target, float a)
-	{
-		if (n == target) {
-			return n;
-		} else {
-			float dir = Mathf.Sign (target - n);
-			n += a * Time.deltaTime * dir;
-			return (dir == Mathf.Sign (target - n)) ? n : target;
-
-		}
-	}
-	
 }
