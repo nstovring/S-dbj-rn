@@ -44,7 +44,27 @@ public class PlayerControl : MonoBehaviour
 		targetSpeedY = Input.GetAxisRaw ("Vertical") * speed;
 		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
 
+
+
+		if (transform.position.x <= -15) {
+			targetSpeed = 1;
+		}
+
+		if (transform.position.x >= 15.5f) {
+			targetSpeed = -1;
+		}
+
+		if (transform.position.y <= -8.5f) {
+			targetSpeedY = 1;
+		}
+
+		if (transform.position.y >= 8.2) {
+			targetSpeedY = -1;
+		}
+
 		transform.position += new Vector3(targetSpeed,targetSpeedY,0) * Time.deltaTime;
+
+
 		amountToMove.y = targetSpeedY;
 		amountToMove.x = targetSpeed;
 
