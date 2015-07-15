@@ -55,7 +55,7 @@ public class Scrolling : MonoBehaviour {
 
 	void top (){
 		transform.position -= new Vector3(0,Time.deltaTime*10,0);
-		if(transform.position.y <= -12 && instantiated){
+		if(transform.position.y <= -90 && instantiated){
 			Instantiate(gameObject, new Vector3(0,27,0),Quaternion.identity);
 			instantiated = false;
 		}
