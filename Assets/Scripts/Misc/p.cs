@@ -6,7 +6,7 @@ public class p : MonoBehaviour
 {
 
 	public Transform[] Points;
-
+	public Transform[] enemiesInPath = new Transform[10];
 	public enum LoopType{
 		NoLoop, Loop
 	}
@@ -14,6 +14,7 @@ public class p : MonoBehaviour
 
 	public IEnumerator<Transform> GetPathEnumerator()
 	{
+		bool ended;
 		if (Points == null || Points.Length < 1) {
 			yield break;
 				}
@@ -34,11 +35,20 @@ public class p : MonoBehaviour
 				if(Type == LoopType.Loop){
 				direction = -1;
 				}else if(Type == LoopType.NoLoop){
+					ended = true;
 				break;
 				}
 			}
 			index = index + direction;
 		}
+	}
+	public void DitchPath(){
+		currentEnemies--;
+	}
+	int currentEnemies;
+	public void AddEnemy(Transform clone){
+		enemiesInPath[currentEnemies] = clone;
+		currentEnemies++;
 	}
 
 	public void OnDrawGizmos(){

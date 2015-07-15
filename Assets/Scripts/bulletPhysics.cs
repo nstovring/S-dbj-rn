@@ -3,29 +3,39 @@ using System.Collections;
 
 public class bulletPhysics : MonoBehaviour {
 	GameObject Bullet;
+	public float bulletSpeed = 2f;
+	int type;
 
 	public enum BulletTypes{
-		type1, type2, type3
+		straight, sine, type3
 	}
 
 	public float velocity;
-	public BulletTypes bulletTypes;
+	public BulletTypes bulletType;
+	float time;
 	// Use this for initialization
 	void Start () {
-	if (bulletTypes == BulletTypes.type1) {
-			setVelocity(3);
-		}
+		time = 0;
+		Destroy (gameObject, 5);
 	}
-	
 	// Update is called once per frame
-	void Update () {
-	
+
+	void Update(){
+		if(bulletType == BulletTypes.sine){
+			SineMove();
+		}
+		time += Time.deltaTime;
+	}
+	public float amplitude = 0.3f;
+	public float frequency = 0.3f;
+	public int reverse = 1;
+	void SineMove(){
+		GetComponent<Rigidbody>().AddForce(amplitude*(Mathf.Sin(2*Mathf.PI*frequency*time) - Mathf.Sin(2*Mathf.PI*frequency*(time - Time.deltaTime)))*transform.right * reverse);
 	}
 
 	public void setVelocity(float v){
-		gameObject.GetComponent<Rigidbody> ().AddForce (transform.up * v*100);
-		Destroy (gameObject, 3);
-}
+
+	}
 
 	void OnCollisionEnter(Collision other){
 		Destroy(gameObject);

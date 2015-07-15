@@ -1,93 +1,105 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class PlayerControl : MonoBehaviour {
+public class PlayerControl : MonoBehaviour
+{
 	public GameObject Player;
-	public float gravity = 20;
+	public GameObject Shield;
+	public Sprite shieldAvailableS; 
+	public Sprite Standard;
 	public float speed = 8;
-	public float acceleration = 30;
-	public float jumpHeight = 12;
-	public float Counter;
 	public float fireRate = 0.25f;
 	private float targetSpeedY;
-
-
 	private float currentspeed;
 	private float currentspeedy;
 	private float targetSpeed;
 	private Vector2 amountToMove;
+	private SpriteRenderer spriteRenderer;
+	private bool playerHit = false;
+	public Animator anim;
+	//public PickUps pickUP;
+	Animator shipAnim;
+	bool shieldAvailable;
 
-	public GameObject Bullet;
-	public Transform bulletSpawn;
-
+	public BulletManager bulletManager;
 	public GameController gameController;
 	private PlayerPhysics playerPhysics;
-	float direct;
+	public float timePassed= 0;
 
 	// Use this for initialization
-	void Start () {
-
-	//	bulletPhysics = GetComponent <BulletPhysics> ();
+	void Start ()
+	{
+		spriteRenderer = GetComponent<SpriteRenderer> ();
+		//anim = GetComponentInChildren<Animator> ();
+		shipAnim = GetComponent<Animator>();
+		//	bulletPhysics = GetComponent <BulletPhysics> ();
 		playerPhysics = GetComponent <PlayerPhysics> ();
-
-	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-		Vector3 playerPos = Player.transform.position;
-
-		targetSpeedY = Input.GetAxis ("Vertical") * speed;
-		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
-		currentspeed = IncrementTowards (currentspeed, targetSpeed, acceleration);
-		currentspeedy = IncrementTowards (currentspeedy, targetSpeedY, acceleration);
-
-				
-		amountToMove.x = currentspeed;
-		amountToMove.y = currentspeedy;
-		playerPhysics.Move (amountToMove * Time.deltaTime);
-
-	
-
-
-
-		Counter += Time.deltaTime;
-		Debug.Log (fireRate);
-		if (Input.GetButton ("Fire1") && Counter > fireRate) {
-			Counter = 0;
-			Shoot ();
-
-
-				}
-	
-		}
-
-	void OnCollisionEnter(Collision c)
+	public Quaternion rotation = Quaternion.identity;
+	void Update ()
 	{
-		if (c.transform.tag == "Enemy") {
-			gameController.subractLife();
+		Vector3 playerPos = Player.transform.position;
+		targetSpeedY = Input.GetAxisRaw ("Vertical") * speed;
+		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
+
+		transform.position += new Vector3(targetSpeed,targetSpeedY,0) * Time.deltaTime;
+		amountToMove.y = targetSpeedY;
+		amountToMove.x = targetSpeed;
+
+		if (targetSpeedY >= 0.1f) {
+			anim.SetInteger ("JetState", 1);
+		} 
+		if (targetSpeedY == 0) {
+			anim.SetInteger ("JetState", 0);
+		} 
+		if(targetSpeedY <=-0.1f) {
+			anim.SetInteger("JetState", 2);
+		}
+		if(targetSpeed >= 0.1f){
+			rotation.eulerAngles = new Vector3(0,0,-15);
+			transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 0.1f );
+		}else if(targetSpeed<= -0.1f){
+			rotation.eulerAngles = new Vector3(0,0,15);
+			transform.rotation = Quaternion.Lerp(transform.rotation, rotation,  0.1f );
+		}else{
+			rotation.eulerAngles = new Vector3(0,0,0);
+			transform.rotation = Quaternion.Lerp(transform.rotation, rotation,  0.1f );
+		}
+
+		if (playerHit) {
+			timePassed += Time.deltaTime;
+			if (timePassed < .5f && timePassed > 0) {
+				//gameController.subractLife();
+				gameObject.GetComponent<SpriteRenderer> ().material.color = Color.red;
+			} else {
+				timePassed = 0;
+				playerHit = false;
+				gameObject.GetComponent<SpriteRenderer> ().material.color = Color.white;
+			}
+			
+		}
+		if (shieldAvailable == true) {
+			spriteRenderer.sprite = shieldAvailableS;
+		} else {
+			spriteRenderer.sprite = Standard;
+		}
+		if (Input.GetKeyDown(KeyCode.Space)&& shieldAvailable == true) {
+			GameObject sh = Instantiate( Shield, transform.position, transform.rotation)as GameObject;
+			shieldAvailable = false;
 		}
 	}
-		
 
-	private void Shoot(){
-
-
-		GameObject clone = Instantiate (Bullet, bulletSpawn.position, bulletSpawn.rotation)as GameObject;
-
-	}
-		private float IncrementTowards(float n, float target, float a)
-		{
-			if (n == target){
-				return n;
-			}
-			else {
-				float dir = Mathf.Sign(target - n);
-				n += a * Time.deltaTime * dir;
-				return (dir == Mathf.Sign(target-n))? n: target;
-
-			}
+	void OnCollisionEnter (Collision c)
+	{
+		if (c.transform.tag == "Shield") {
+			shieldAvailable = true;
 		}
-	
+
+		if (c.transform.tag == "Enemy" || c.transform.tag == "enemyBullet") {
+//			gameController.subractLife ();
+			playerHit = true;
+		}
+	}
 }

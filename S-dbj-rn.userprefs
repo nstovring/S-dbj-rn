@@ -1,11 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\bulletPhysics.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Spawner.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameController.cs" Line="20" Column="13" />
-      <File FileName="Assets\Scripts\bulletPhysics.cs" Line="23" Column="3" />
-      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="69" Column="33" />
-      <File FileName="Assets\Scripts\Misc\PlayerPhysics.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Misc\p.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Spawner.cs" Line="20" Column="10" />
+      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Scrolling.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PowerUP.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PickUps.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyAttacking.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BulletManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Misc\FollowPath.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

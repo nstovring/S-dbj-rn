@@ -46,17 +46,23 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnemyCannonControl.cs" />
+     <Compile Include="Assets\Scripts\BulletManager.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyAttacking.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Misc\FollowPath.cs" />
-     <Compile Include="Assets\Scripts\Misc\PDefi.cs" />
      <Compile Include="Assets\Scripts\Misc\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\Misc\PlayerPhysics.cs" />
      <Compile Include="Assets\Scripts\Misc\p.cs" />
+     <Compile Include="Assets\Scripts\PickUps.cs" />
+     <Compile Include="Assets\Scripts\PowerUP.cs" />
+     <Compile Include="Assets\Scripts\Scrolling.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\bulletPhysics.cs" />
-     <Compile Include="Assets\Scrolling.cs" />
-     <Compile Include="Assets\Spawner.cs" />
+     <Compile Include="Assets\TestingRotation.cs" />
+     <None Include="Assets\Sprites\Sprites\license.txt" />
+     <None Include="Assets\Sprites\Sprites\Spritesheet\sheet.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
