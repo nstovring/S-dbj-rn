@@ -57,11 +57,7 @@ public class Enemy : MonoBehaviour {
 	void Update () {
 		//player = GameObject.FindGameObjectWithTag("Player");
 		if(HealthBar != null){
-			HealthBar.rectTransform.sizeDelta = new Vector2(760 * health/100, 100);
-			//HealthBar.rectTransform.anchoredPosition = new Vector2(-731.085f * health/100, 100);
-
-			//HealthBar.rectTransform.localScale = new Vector3(1* health/100, 1, 1);
-			//HealthBar.rectTransform.sizeDelta = new Rect(HealthBar.rectTransform.position.x, HealthBar.rectTransform.position.y, 1546.17f * health/100, 100);
+			HealthBar.rectTransform.sizeDelta = new Vector2(760f * health/100, 100);
 		}
 	//	gameObject.GetComponent<Material>().SetColor(Color.white);
 		ColorChange();
