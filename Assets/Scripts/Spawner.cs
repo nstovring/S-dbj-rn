@@ -38,7 +38,7 @@ public class Spawner : MonoBehaviour
 		spawnTime = spawnRate;
 		timePassed += Time.deltaTime;
 		maxCurrentSpawn = amount;
-		Debug.Log(counter);
+		//Debug.Log(counter);
 
 		if (timePassed > spawnTime && counter < maxCurrentSpawn) {
 			GameObject clone = Instantiate (enemy, transform.position, Quaternion.identity) as GameObject;
@@ -65,7 +65,7 @@ public class Spawner : MonoBehaviour
 			timePassed = 0;
 		} else if(counter == maxCurrentSpawn){
 			//counter = 0;
-			Debug.Log ("fasfga");
+			//Debug.Log ("fasfga");
 		}
 
 	}

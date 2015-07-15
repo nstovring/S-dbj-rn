@@ -17,12 +17,13 @@ public class EnemyAttacking : MonoBehaviour {
 	ShootingMode myShootingMode;
 
 	public enum FireMode{
-		Simple, Burst, Automatic, Spread, BurstAndSpread, BurstNoCannon, SineWave 
+		Simple, Burst, Automatic, Spread, BurstAndSpread, BurstNoCannon, SineWave, BurstSpreadSine  
 	}
 
 	public FireMode fireMode = FireMode.Simple;
 	// Use this for initialization
 	void Start () {
+		//Debug.Log("Whatup");
 		player = GameObject.FindGameObjectWithTag("Player");
 		if(fireMode == FireMode.Simple){
 			myShootingMode = SimpleFire;
@@ -37,7 +38,11 @@ public class EnemyAttacking : MonoBehaviour {
 			myShootingMode +=SpreadShot;
 			myShootingMode +=Burst;
 		}
-
+		if (fireMode == FireMode.BurstSpreadSine){
+			myShootingMode +=SpreadShot;
+			myShootingMode +=Burst;
+			myShootingMode += SineWave;
+		}
 		if (fireMode == FireMode.BurstNoCannon){
 			myShootingMode = burstNoCannon;
 		}
