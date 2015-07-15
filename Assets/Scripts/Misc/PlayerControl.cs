@@ -41,10 +41,26 @@ public class PlayerControl : MonoBehaviour
 	void Update ()
 	{
 		Vector3 playerPos = Player.transform.position;
+
 		targetSpeedY = Input.GetAxisRaw ("Vertical") * speed;
 		targetSpeed = Input.GetAxisRaw ("Horizontal") * speed;
-
+		if (transform.position.x >= 15) {
+			targetSpeed = -1;
+		}
+		if (transform.position.x <= -15) {
+			targetSpeed = 1;
+		}
+		if (transform.position.y >= 8.15f) {
+			targetSpeedY = -1;
+		}
+		if (transform.position.y <= -8.37) {
+			targetSpeedY = 1;
+		}
 		transform.position += new Vector3(targetSpeed,targetSpeedY,0) * Time.deltaTime;
+
+
+
+
 		amountToMove.y = targetSpeedY;
 		amountToMove.x = targetSpeed;
 
