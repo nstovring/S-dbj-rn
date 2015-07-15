@@ -58,11 +58,23 @@ public class EnemyAttacking : MonoBehaviour {
 		}
 	}
 	float sineFireRate = 0.1f;
+	float sineBurstFireRate = 3;
+	float sineTimePassed;
+	float sineBurstTimePassed;
+	int sineShots = 20;
 	void SineWave(){
-		timePassed += Time.deltaTime;
-		if(timePassed> sineFireRate){
-			SineShoot(bullets[2]);
-			timePassed = 0;
+		sineTimePassed += Time.deltaTime;
+		if(sineTimePassed > sineBurstFireRate){
+			sineBurstTimePassed+= Time.deltaTime;
+			if(sineBurstTimePassed> sineFireRate){
+				SineShoot(bullets[2]);
+				sineShots--;
+				sineBurstTimePassed = 0;
+			}
+			if(sineShots<= 0){
+				sineTimePassed = 0;
+				sineShots = 20;
+			}
 		}
 	}
 

@@ -27,10 +27,10 @@ public class Enemy : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag("Player");
 		if(isBoss){
 		HealthBar = GameObject.FindGameObjectWithTag("HealthOverlay").GetComponent<Image>();
-			if(HealthBar != null){
-			Mask mask =  HealthBar.transform.parent.gameObject.AddComponent<Mask>();
-			mask.MaskEnabled();
-			}
+			//if(HealthBar != null){
+			//Mask mask =  HealthBar.transform.parent.gameObject.AddComponent<Mask>();
+			//mask.MaskEnabled();
+			//}
 		}
 	}
 	
@@ -111,7 +111,7 @@ public class Enemy : MonoBehaviour {
 				GameObject pickUpClone = Instantiate(pickUp,transform.position,Quaternion.identity) as GameObject;
 			}
 			if(isBoss){
-			Destroy(HealthBar.transform.parent);
+				HealthBar.transform.parent.GetComponent<Image>().enabled = false;
 			}
 			Destroy(gameObject);
 			Destroy (Ex, 0.5f);
