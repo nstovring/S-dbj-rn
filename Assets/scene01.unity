@@ -186,21 +186,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!115 &183667630
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  serializedVersion: 4
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: GraphicRaycaster
-  m_Namespace: UnityEngine.UI
-  m_AssemblyName: UnityEngine.UI.dll
-  m_IsEditorScript: 0
 --- !u!1001 &409997925
 Prefab:
   m_ObjectHideFlags: 0
@@ -272,21 +257,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2144771829}
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!115 &917387248
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  serializedVersion: 4
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: CanvasScaler
-  m_Namespace: UnityEngine.UI
-  m_AssemblyName: UnityEngine.UI.dll
-  m_IsEditorScript: 0
 --- !u!1001 &939008868
 Prefab:
   m_ObjectHideFlags: 0
@@ -564,22 +534,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2144771829}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!1 &1407412843
-GameObject:
-  m_PrefabParentObject: {fileID: 166034, guid: 10f2aa4b01543f64a9300a76e7550232, type: 2}
-  m_PrefabInternal: {fileID: 1732638366}
---- !u!65 &1407412849
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1407412843}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.28999996, y: 2.08999991, z: .200000003}
-  m_Center: {x: 0, y: .689999998, z: 0}
 --- !u!115 &1423836237
 MonoScript:
   m_ObjectHideFlags: 0
@@ -789,20 +743,7 @@ Prefab:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 897262944}
-    - target: {fileID: 11417396, guid: 10f2aa4b01543f64a9300a76e7550232, type: 2}
-      propertyPath: fireMode
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 11458584, guid: 10f2aa4b01543f64a9300a76e7550232, type: 2}
-      propertyPath: isBoss
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 21262210, guid: 10f2aa4b01543f64a9300a76e7550232, type: 2}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 13526614, guid: 10f2aa4b01543f64a9300a76e7550232, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10f2aa4b01543f64a9300a76e7550232, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1780246957

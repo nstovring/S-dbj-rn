@@ -104,11 +104,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 421010}
-  - 135: {fileID: 13526614}
   - 114: {fileID: 11406514}
   - 114: {fileID: 11458584}
   - 114: {fileID: 11417396}
   - 212: {fileID: 21262210}
+  - 65: {fileID: 6585956}
   m_Layer: 10
   m_Name: Enemy2
   m_TagString: Enemy
@@ -321,6 +321,18 @@ Transform:
   - {fileID: 467902}
   m_Father: {fileID: 421010}
   m_RootOrder: 5
+--- !u!65 &6585956
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.28999996, y: 2.08999991, z: .200000003}
+  m_Center: {x: 0, y: .689999998, z: 0}
 --- !u!114 &11406514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -357,7 +369,7 @@ MonoBehaviour:
   - {fileID: 136966, guid: 0d71a4fd08ee749448ad95566f6a8cbb, type: 2}
   bulletTypes: []
   MainCannon: {fileID: 400530}
-  fireMode: 4
+  fireMode: 7
   spreadShotFiringPoints:
   - {fileID: 409276}
   - {fileID: 450274}
@@ -456,18 +468,6 @@ MonoBehaviour:
   isRotating: 0
   isAiming: 1
   inverse: 0
---- !u!135 &13526614
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166034}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.53594244
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &21241486
 SpriteRenderer:
   m_ObjectHideFlags: 1
