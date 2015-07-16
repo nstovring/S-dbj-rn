@@ -111,15 +111,19 @@ public class PlayerControl : MonoBehaviour
 		}
 	}
 
+	public void SetPlayerHit(bool hit){
+		playerHit = hit;
+	}
+
 	void OnCollisionEnter (Collision c)
 	{
 		if (c.transform.tag == "Shield") {
 			shieldAvailable = true;
 		}
 
-		if (c.transform.tag == "Enemy" || c.transform.tag == "enemyBullet") {
+		/*if (c.transform.tag == "Enemy" || c.transform.tag == "enemyBullet") {
 //			gameController.subractLife ();
 			playerHit = true;
-		}
+		}*/
 	}
 }

@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Misc\PlayerControl.cs">
     <Files>
+      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Enemy.cs" Line="60" Column="55" />
       <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\bulletPhysics.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\EnemyAttacking.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Misc\PlayerControl.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Misc\PlayerPhysics.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Misc\FollowPath.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Misc\p.cs" Line="1" Column="1" />
