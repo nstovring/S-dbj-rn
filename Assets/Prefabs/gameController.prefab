@@ -44,6 +44,7 @@ MonoBehaviour:
   - {fileID: 116790, guid: a292c379b21721e46a46d8c64ecfaac6, type: 2}
   - {fileID: 135430, guid: 2b623b7136d9d064fa677fb90b3a1c1b, type: 2}
   - {fileID: 166034, guid: 10f2aa4b01543f64a9300a76e7550232, type: 2}
+  player: {fileID: 183182, guid: 9d9799a7e6cf7e64ca7eb3cc18f5f96a, type: 2}
   EnemyID: 1
   lives: 3
   spawner: {fileID: 11466096, guid: 11b28c0cd8c262849ade3e947ce2424d, type: 2}

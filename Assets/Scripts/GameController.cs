@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 	public Text life;
 	public GameObject[] enemies = new GameObject[2];
+	public GameObject player;
 	public int EnemyID= 1;
 	public int lives = 3;
 	float timePassed;
@@ -26,7 +27,11 @@ public class GameController : MonoBehaviour {
 		timePassed += Time.deltaTime;
 		//string liv = " " + lives;
 
-		if (timePassed > 0 && timePassed < 10f ) { 
+		if (timePassed > 0f && timePassed < 5f) {
+
+		}
+
+		if (timePassed > 5 && timePassed < 10f ) { 
 			spawner.spawnTwo(paths[0], enemies[0],paths[1], enemies[0], 2,1);
 			return;
 		}
