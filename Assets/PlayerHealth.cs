@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour {
 		bManager.enabled = true;
 		collider.enabled = true;
 		pControl.anim.transform.GetComponent<SpriteRenderer>().enabled = true;
-		sRenderer.color = new Color(255,255,Mathf.PingPong(255,Time.time* speed));
+		sRenderer.color = new Color(Mathf.PingPong(speed,255),255,255);
 		if(respawnTimePassed >= invincibleTime){
 			respawnTimePassed = 0;
 			myLife = Alive;
